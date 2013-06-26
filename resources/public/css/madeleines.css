@@ -71,10 +71,29 @@ input[type="submit"]:hover {
   color: rgba(85, 98, 112, 1);
 }
 
+.poem {
+  font-family: "Josefin Slab", serif;
+  font-weight: 300;
+  color: #556270;
+  font-size: 1.2em;
+  width: 75%;
+  margin: auto;
+}
+
+.poet {
+  font-family: "Josefin Slab", serif;
+  font-weight: 300;
+  color: #556270;
+  font-size: 1.0em;
+  text-align: right;
+  width: 75%;
+  margin: auto;
+}
+
 .footer {
   margin-top: 10em;
   border-top: 1px solid #99b;
   text-align: right;
-  font-family: 'Josefin Slab', sans-serif;
+  font-family: 'Josefin Slab', serif;
   font-weight: 300;
 }

@@ -13,7 +13,8 @@
   [:head
     [:title "Madeleines"]
     (include-css "/css/madeleines.css")
-    (include-js "http://code.jquery.com/jquery-1.10.1.min.js" "/js/madeleines.js")])
+    (include-js "http://code.jquery.com/jquery-1.10.1.min.js"
+                "/js/madeleines.js")])
 
 (defn- layout [root-class & content]
   (html5
@@ -36,3 +37,15 @@
     (form-to [:post "/bake"]
       (text-field "url")
       (submit-button "bake"))))
+
+(defn- poem [& lines]
+  [:div {:class "poem"}
+    (map #(vector :div {:class "line"} %1) lines)])
+
+(defn four-oh-four-page []
+  (layout "404"
+    (poem "Yesterday upon the stair"
+          "I saw a man who wasn't there"
+          "He wasn't there again today"
+          "I wish that man would go away")
+    [:div {:class "poet"} "Hughes Means"]))

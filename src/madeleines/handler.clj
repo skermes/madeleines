@@ -8,7 +8,7 @@
   (GET "/" [] (index-page))
   (GET "/bake" [] (bake-page))
   (route/resources "/")
-  (route/not-found "Not Found"))
+  (route/not-found (four-oh-four-page)))
 
 (def app
   (handler/site app-routes))
