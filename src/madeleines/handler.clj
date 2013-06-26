@@ -6,6 +6,7 @@
 
 (defroutes app-routes
   (GET "/" [] (index-page))
+  (GET "/bake" [] (bake-page))
   (route/resources "/")
   (route/not-found "Not Found"))
 

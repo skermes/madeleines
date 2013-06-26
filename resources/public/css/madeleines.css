@@ -1,6 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:300|Open+Sans:400,800);
 
-
 .container {
   width: 35em;
   margin: auto;
@@ -12,6 +11,7 @@ h1 {
   border-bottom: 1px solid #99b;
   line-height: 0.7;
   margin-top: 1em;
+  margin-bottom: 4em;
   color: #556270;
 }
 
@@ -24,9 +24,13 @@ a:hover {
   text-decoration: underline;
 }
 
+h1 a:hover,
+.footer a:hover {
+  text-decoration: none;
+}
+
 h2 {
   text-align: center;
-  margin-top: 5em;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
@@ -35,4 +39,42 @@ h2 {
 .preview {
   text-align: justify;
   font-family: 'Open Sans', sans-serif;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #99b;
+  font-family: 'Josefin Slab', serif;
+  font-weight: 300;
+  font-size: 150%;
+  color: #556270;
+  outline: none;
+}
+
+input[type="submit"] {
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  background-color: rgba(85, 98, 112, .1);
+  font-weight: 800;
+  color: rgba(85, 98, 112, .6);
+  text-transform: uppercase;
+  width: 6em;
+  margin: auto;
+  font-size: 150%;
+  margin-top: .5em;
+  display: block;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(85, 98, 112, .3);
+  color: rgba(85, 98, 112, 1);
+}
+
+.footer {
+  margin-top: 10em;
+  border-top: 1px solid #99b;
+  text-align: right;
+  font-family: 'Josefin Slab', sans-serif;
+  font-weight: 300;
 }

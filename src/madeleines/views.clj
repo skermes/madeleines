@@ -1,20 +1,24 @@
 (ns madeleines.views
   (:use madeleines.data)
-  (:use [hiccup core page element]))
+  (:use [hiccup core page element form]))
 
-(defn- footer [] [:div {:class "footer"}])
+(defn- footer []
+  [:div {:class "footer"}
+    (link-to "/bake" "bake")])
 
-(defn- header [] [:h1 "Madeleines"])
+(defn- header []
+  [:h1 (link-to "/" "Madeleines")])
 
 (defn- head-tag []
   [:head
     [:title "Madeleines"]
-    (include-css "/css/madeleines.css")])
+    (include-css "/css/madeleines.css")
+    (include-js "http://code.jquery.com/jquery-1.10.1.min.js" "/js/madeleines.js")])
 
-(defn- layout [& content]
+(defn- layout [root-class & content]
   (html5
     (head-tag)
-    [:body
+    [:body {:class root-class}
       [:div {:class "container"}
         (header)
         content
@@ -22,15 +26,13 @@
 
 (defn index-page []
   (let [{title :title url :url preview :preview} (bite)]
-    (layout
-      (link-to url [:h2 title])
+    (layout "index"
+      [:h2 (link-to url title)]
       [:div {:class "preview"}
         preview])))
 
-
-
-
-
-
-
-
+(defn bake-page []
+  (layout "bake"
+    (form-to [:post "/bake"]
+      (text-field "url")
+      (submit-button "bake"))))
