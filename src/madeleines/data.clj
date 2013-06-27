@@ -1,5 +1,7 @@
 (ns madeleines.data
-  (:use [korma core db]))
+  (:use [korma core db])
+  (:use [clj-time.core :only [date-time year month day now]])
+  (:use clj-time.coerce))
 
 (defdb madeleines (System/getenv "DATABASE_URL"))
 
@@ -9,7 +11,8 @@
   (database madeleines))
 
 (defn- today []
-  (java.sql.Date. (.getTime (java.util.Date.))))
+  (let [n (now)]
+    (java.sql.Date. (to-long (date-time (year n) (month n) (day n))))))
 
 (defn- earlier-remembrances []
   (select remembrances
