@@ -13,20 +13,24 @@
   (table :remembrances)
   (database madeleines))
 
-(defn- today []
+(defn today-long []
   (let [n (now)]
-    (java.sql.Date. (to-long (date-time (year n) (month n) (day n))))))
+    (to-long (date-time (year n) (month n) (day n)))))
+
+(defn- today []
+  (java.sql.Date. (today-long)))
 
 (defn- earlier-remembrances []
   (select remembrances
     (fields :url :title :preview)
     (where {:remembered_on [< (today)]})))
 
-; TODO: Make this return an arbitrary (but identical for the entire day)
-; result
+(defn today-random [n]
+  (.nextInt (java.util.Random. (today-long)) n))
+
 (defn bite []
   (let [result-set (earlier-remembrances)]
-    (first result-set)))
+    (result-set (today-random (count result-set)))))
 
 (defn- extract-content [url]
   (.extractContent (Goose. (Configuration.)) url))
