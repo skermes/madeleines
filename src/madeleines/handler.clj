@@ -8,9 +8,7 @@
 (defroutes app-routes
   (GET "/" [] (index-page))
   (GET "/bake" [] (bake-page))
-  (POST "/bake" [url]
-    (bake url)
-    (bake-page))
+  (POST "/bake" [url] (bake-page (bake url)))
   (route/resources "/")
   (route/not-found (four-oh-four-page)))
 

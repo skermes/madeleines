@@ -40,8 +40,15 @@
 
 (defn bake [url]
   (let [article (extract-content url)]
-    (insert remembrances
-      (values {:url url
-               :title (.title article)
-               :preview (preview-text (.cleanedArticleText article))
-               :remembered_on (today)}))))
+    (try
+      (do
+        (insert remembrances
+          (values {:url url
+                   :title (.title article)
+                   :preview (preview-text (.cleanedArticleText article))
+                   :remembered_on (today)}))
+        :success)
+      (catch Exception e
+        (do
+          (println (.getMessage e))
+          :error)))))

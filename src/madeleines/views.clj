@@ -32,11 +32,24 @@
       [:div {:class "preview"}
         preview])))
 
-(defn bake-page []
-  (layout "bake"
-    (form-to [:post "/bake"]
-      (text-field "url")
-      (submit-button "bake"))))
+(defn- toast [klass text]
+  [:div {:class (str "toast toast-" klass)} text])
+
+(defn- submission-state-toast [state]
+  (cond
+    (nil? state) nil
+    (= :success state) (toast "success" "Nice.  We've got it tucked away on the shelf for a rainy Sunday morning.")
+    (= :error state) (toast "error" "Looks like our oven ate that one. Try again?")
+    :else nil))
+
+(defn bake-page
+  ([] (bake-page nil))
+  ([state]
+    (layout "bake"
+      (submission-state-toast state)
+      (form-to [:post "/bake"]
+        (text-field "url")
+        (submit-button "bake")))))
 
 (defn- poem [& lines]
   [:div {:class "poem"}

@@ -11,7 +11,7 @@ h1 {
   border-bottom: 1px solid #99b;
   line-height: 0.7;
   margin-top: 1em;
-  margin-bottom: 4em;
+  margin-bottom: 8rem;
   color: #556270;
 }
 
@@ -90,8 +90,24 @@ input[type="submit"]:hover {
   margin: auto;
 }
 
+.toast {
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8em;
+  text-align: right;
+  margin-top: -8rem;
+  margin-bottom: 8rem;
+}
+
+.toast-error {
+  color: #FA3F3F;
+}
+
+.toast-success {
+  color: #AFAF1B;
+}
+
 .footer {
-  margin-top: 10em;
+  margin-top: 8rem;
   border-top: 1px solid #99b;
   text-align: right;
   font-family: 'Josefin Slab', serif;
