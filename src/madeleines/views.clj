@@ -1,5 +1,4 @@
 (ns madeleines.views
-  (:use madeleines.data)
   (:use [hiccup core page element form]))
 
 (defn- footer []
@@ -25,8 +24,8 @@
         content
         (footer)]]))
 
-(defn index-page []
-  (let [{title :title url :url preview :preview} (bite)]
+(defn index-page [bite]
+  (let [{title :title url :url preview :preview} bite]
     (layout "index"
       [:h2 (link-to url title)]
       [:div {:class "preview"} preview]

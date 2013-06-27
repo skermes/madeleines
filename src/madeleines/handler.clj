@@ -6,7 +6,7 @@
             [compojure.route :as route]))
 
 (defroutes app-routes
-  (GET "/" [] (index-page))
+  (GET "/" [] (index-page (bite)))
   (GET "/bake" [] (bake-page))
   (POST "/bake" [url] (bake-page (bake url)))
   (route/resources "/")
