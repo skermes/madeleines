@@ -6,7 +6,8 @@
                  [hiccup "1.0.0"]
                  [korma "0.3.0-RC5"]
                  [postgresql "9.1-901.jdbc4"]
-                 [clj-time "0.5.1"]]
+                 [clj-time "0.5.1"]
+                 [com.gravity/goose "2.1.22"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler madeleines.handler/app}
   :profiles
