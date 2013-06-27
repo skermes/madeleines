@@ -66,9 +66,16 @@ input[type="submit"] {
   display: block;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+.index input[type="submit"]:hover {
   background-color: rgba(85, 98, 112, .3);
   color: rgba(85, 98, 112, 1);
+}
+
+.index input[type="submit"] {
+  background-color: rgba(85, 98, 112, .05);
+  color: rgba(85, 98, 112, .3);
+  margin-top: 1rem;
 }
 
 .poem {

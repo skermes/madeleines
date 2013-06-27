@@ -29,8 +29,10 @@
   (let [{title :title url :url preview :preview} (bite)]
     (layout "index"
       [:h2 (link-to url title)]
-      [:div {:class "preview"}
-        preview])))
+      [:div {:class "preview"} preview]
+      [:div {:class "actions"}
+        (form-to {:class "action-drop"} [:delete "/"]
+          (submit-button "drop"))])))
 
 (defn- toast [klass text]
   [:div {:class (str "toast toast-" klass)} text])
