@@ -13,7 +13,7 @@
   (table :remembrances)
   (database madeleines))
 
-(defn today-long []
+(defn- today-long []
   (let [n (now)]
     (to-long (date-time (year n) (month n) (day n)))))
 
@@ -25,7 +25,7 @@
     (fields :url :title :preview)
     (where {:remembered_on [< (today)]})))
 
-(defn today-random [n]
+(defn- today-random [n]
   (.nextInt (java.util.Random. (today-long)) n))
 
 (defn bite []
