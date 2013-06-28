@@ -78,8 +78,15 @@ input[type="submit"]:hover,
   margin-top: 1rem;
 }
 
+.dropped-notice {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(85, 98, 112, .5);
+  margin-top: 1rem;
+}
+
 .poem {
-  font-family: "Josefin Slab", serif;
+  font-family: 'Josefin Slab', serif;
   font-weight: 300;
   color: #556270;
   font-size: 1.2em;
@@ -88,7 +95,7 @@ input[type="submit"]:hover,
 }
 
 .poet {
-  font-family: "Josefin Slab", serif;
+  font-family: 'Josefin Slab', serif;
   font-weight: 300;
   color: #556270;
   font-size: 1.0em;

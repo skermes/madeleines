@@ -7,6 +7,7 @@
 
 (defroutes app-routes
   (GET "/" [] (index-page (bite)))
+  (DELETE "/" [] (index-page (drop-bite)))
   (GET "/bake" [] (bake-page))
   (POST "/bake" [url] (bake-page (bake url)))
   (route/resources "/")

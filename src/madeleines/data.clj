@@ -13,19 +13,24 @@
   (table :remembrances)
   (database madeleines))
 
-(defn- today-long []
+(defn today-long []
   (let [n (now)]
     (to-long (date-time (year n) (month n) (day n)))))
 
-(defn- today []
+(defn today []
   (java.sql.Date. (today-long)))
 
+; Comparing dates in Korma is a ridiculous, inexcusable shitshow.  The object
+; that comes back from postgresql date column is java.sql.Date, which can't be
+; compared with regular operators, so I've been unable to get Korma to generate
+; a useful query for it.  This is completely absurd, since everything I want to
+; do is completely trivial in SQL, so fuck it.
 (defn- earlier-remembrances []
-  (select remembrances
-    (fields :url :title :preview)
-    (where {:remembered_on [< (today)]})))
+  (exec-raw
+    ["select * from remembrances where remembered_on < current_date and (dropped_on is null or dropped_on >= current_date) order by id" ]
+    :results))
 
-(defn- today-random [n]
+(defn today-random [n]
   (.nextInt (java.util.Random. (today-long)) n))
 
 (defn bite []
@@ -46,13 +51,18 @@
   (let [article (extract-content url)]
     (try
       (do
-        (insert remembrances
-          (values {:url url
-                   :title (.title article)
-                   :preview (preview-text (.cleanedArticleText article))
-                   :remembered_on (today)}))
+        (exec-raw
+          ["insert into remembrances (url, title, preview, remembered_on) values (?, ?, ?, current_date);"
+           [url (.title article) (preview-text (.cleanedArticleText article))]])
         :success)
       (catch Exception e
         (do
           (println (.getMessage e))
           :error)))))
+
+; Hah!  Hah!  Dates!  Fuck everything!
+(defn drop-bite []
+  (let [todays-bite (bite)]
+    (exec-raw
+      ["update remembrances set dropped_on = current_date where id = ?" [(todays-bite :id)]])
+    (bite)))
