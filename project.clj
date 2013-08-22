@@ -8,6 +8,7 @@
                  [postgresql "9.1-901.jdbc4"]
                  [clj-time "0.5.1"]
                  [com.gravity/goose "2.1.22"]]
+  :min-lein-version "2.2.0"
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler madeleines.handler/app}
   :profiles
