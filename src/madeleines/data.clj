@@ -52,7 +52,7 @@
     (try
       (do
         (exec-raw
-          ["insert into remembrances (url, title, preview, remembered_on) values (?, ?, ?, current_date);"
+          ["insert into remembrances (id, url, title, preview, remembered_on) values (default, ?, ?, ?, current_date);"
            [url (.title article) (preview-text (.cleanedArticleText article))]])
         :success)
       (catch Exception e
