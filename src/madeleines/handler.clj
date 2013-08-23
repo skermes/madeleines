@@ -3,7 +3,8 @@
   (:use madeleines.views)
   (:use madeleines.data)
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
+            [compojure.route :as route])
+  (:require [ring.adapter.jetty :as jetty]))
 
 (defroutes app-routes
   (GET "/" [] (index-page (bite)))
@@ -15,3 +16,6 @@
 
 (def app
   (handler/site app-routes))
+
+(defn -main [port]
+  (jetty/run-jetty app {:port (Integer. port) :join? false}))

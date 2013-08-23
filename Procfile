@@ -1,1 +1,1 @@
-web: lein with-profile production trampoline ring server $PORT
+web: java $JVM_OPTS -cp target/madeleines-standalone.jar clojure.main -m madeleines.handler $PORT
