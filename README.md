@@ -19,13 +19,13 @@ When running on Sean's VM on jeanne-poisson, set it with
 The database has one table, defined like this:
 
     create table remembrances (
-       id serial primary key,
-       url varchar,
-       title varchar,
-       preview text,
-       remembered_on date,
-       dropped_on date
-     );
+      id serial primary key,
+      url varchar,
+      title varchar,
+      preview text,
+      remembered_on date,
+      dropped_on date
+    );
 
 To start a web server for the application, run:
 
