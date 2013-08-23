@@ -1,17 +1,12 @@
 (ns madeleines.data
-  (:use [korma core db])
   (:use [clj-time.core :only [date-time year month day now]])
   (:use clj-time.coerce)
   (:use [clojure.string :only [split trim]])
+  (:require [clojure.java.jdbc :as sql])
   (:import com.gravity.goose.Goose)
   (:import com.gravity.goose.Configuration))
 
-(defdb madeleines (System/getenv "DATABASE_URL"))
-
-(defentity remembrances
-  (pk :id)
-  (table :remembrances)
-  (database madeleines))
+(def madeleines-db (System/getenv "DATABASE_URL"))
 
 (defn today-long []
   (let [n (now)]
@@ -26,15 +21,14 @@
 ; a useful query for it.  This is completely absurd, since everything I want to
 ; do is completely trivial in SQL, so fuck it.
 (defn- earlier-remembrances []
-  (exec-raw
-    ["select * from remembrances where remembered_on < current_date and (dropped_on is null or dropped_on >= current_date) order by id" ]
-    :results))
+  (sql/query madeleines-db
+    ["select * from remembrances where remembered_on < current_date and (dropped_on is null or dropped_on >= current_date) order by id" ]))
 
 (defn today-random [n]
   (.nextInt (java.util.Random. (today-long)) n))
 
 (defn bite []
-  (let [result-set (earlier-remembrances)]
+  (let [result-set (vec (earlier-remembrances))]
     (result-set (today-random (count result-set)))))
 
 (defn- extract-content [url]
@@ -53,9 +47,9 @@
   (let [article (extract-content url)]
     (try
       (do
-        (exec-raw
+        (sql/execute! madeleines-db
           ["insert into remembrances (id, url, title, preview, remembered_on) values (default, ?, ?, ?, current_date);"
-           [url (.title article) (preview-text (.cleanedArticleText article))]])
+           url (.title article) (preview-text (.cleanedArticleText article))])
         :success)
       (catch Exception e
         (do
@@ -66,6 +60,6 @@
 ; Hah!  Hah!  Dates!  Fuck everything!
 (defn drop-bite []
   (let [todays-bite (bite)]
-    (exec-raw
-      ["update remembrances set dropped_on = current_date where id = ?" [(todays-bite :id)]])
+    (sql/execute! madeleines-db
+      ["update remembrances set dropped_on = current_date where id = ?" (todays-bite :id)])
     (bite)))
