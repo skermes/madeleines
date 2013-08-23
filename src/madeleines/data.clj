@@ -45,7 +45,9 @@
 
 (defn- preview-text [full-text]
   (let [first-graf (first-non-empty (split full-text #"\n"))]
-    (subs first-graf 0 (min 450 (count first-graf)))))
+    (if (nil? first-graf)
+        ""
+        (subs first-graf 0 (min 450 (count first-graf))))))
 
 (defn bake [url]
   (let [article (extract-content url)]
@@ -58,6 +60,7 @@
       (catch Exception e
         (do
           (println (.getMessage e))
+          (.printStackTrace e)
           :error)))))
 
 ; Hah!  Hah!  Dates!  Fuck everything!
