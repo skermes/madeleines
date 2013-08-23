@@ -15,11 +15,6 @@
 (defn today []
   (java.sql.Date. (today-long)))
 
-; Comparing dates in Korma is a ridiculous, inexcusable shitshow.  The object
-; that comes back from postgresql date column is java.sql.Date, which can't be
-; compared with regular operators, so I've been unable to get Korma to generate
-; a useful query for it.  This is completely absurd, since everything I want to
-; do is completely trivial in SQL, so fuck it.
 (defn- earlier-remembrances []
   (sql/query madeleines-db
     ["select * from remembrances where remembered_on < current_date and (dropped_on is null or dropped_on >= current_date) order by id" ]))
