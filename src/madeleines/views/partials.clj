@@ -11,8 +11,7 @@
 (defn head-tag []
   [:head
     [:title "Madeleines"]
-    (include-css "/css/madeleines.css")
-    (include-js "/js/madeleines.js")])
+    (include-css "/css/madeleines.css")])
 
 (defn drop-button-or-notice [dropped-on]
   (cond
