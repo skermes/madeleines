@@ -16,3 +16,7 @@ pom.xml
 
 .env
 .nrepl-port
+
+# Build target for cljsbuild,
+# and where we serve static assets.
+/resources/public/js
