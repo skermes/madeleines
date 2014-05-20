@@ -1,7 +1,16 @@
 (ns madeleines.views
   (:use [hiccup core page element form])
   (:use madeleines.views.partials)
-  (:use madeleines.views.layouts))
+  (:use madeleines.views.layouts)
+  (:require [hiccup.page :refer [html5 include-css include-js]]))
+
+(defn js-client-page []
+  (html5
+    [:head
+      [:title "Madeleines"]
+      (include-css "/css/madeleines.css")]
+    [:body
+      (include-js "/js/madeleines.js")]))
 
 (defn index-page [bite]
   (let [{title :title url :url preview :preview dropped-on :dropped_on} bite]

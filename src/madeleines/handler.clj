@@ -8,7 +8,7 @@
   (:require [ring.adapter.jetty :as jetty]))
 
 (defroutes app-routes
-  (GET "/" [] (index-page (bite)))
+  (GET "/" [] (js-client-page))
   (DELETE "/" [] (index-page (drop-bite)))
   (GET "/bake" [] (bake-page))
   (POST "/bake" [url] (bake-page (bake url)))
