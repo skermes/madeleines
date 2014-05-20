@@ -12,8 +12,7 @@
   [:head
     [:title "Madeleines"]
     (include-css "/css/madeleines.css")
-    (include-js "http://code.jquery.com/jquery-1.10.1.min.js"
-                "/js/madeleines.js")])
+    (include-js "/js/madeleines.js")])
 
 (defn drop-button-or-notice [dropped-on]
   (cond
