@@ -85,7 +85,7 @@ input[type="submit"]:hover,
   margin-top: 1rem;
 }
 
-.poem {
+.poem, .waiting {
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
   color: #556270;
@@ -94,7 +94,7 @@ input[type="submit"]:hover,
   margin: auto;
 }
 
-.poet {
+.signature {
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
   color: #556270;
@@ -102,6 +102,10 @@ input[type="submit"]:hover,
   text-align: right;
   width: 75%;
   margin: auto;
+}
+
+.waiting div {
+  margin-bottom: 1rem;
 }
 
 .toast {
@@ -126,21 +130,4 @@ input[type="submit"]:hover,
   text-align: right;
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
-}
-
-.waiting {
-  font-family: 'Josefin Slab', serif;
-  font-weight: 300;
-  color: #556270;
-  font-size: 1.2em;
-  width: 75%;
-  margin: auto;
-}
-
-.waiting div {
-  margin-bottom: 1rem;
-}
-
-.waiting .signature {
-  text-align: right;
 }

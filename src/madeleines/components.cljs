@@ -24,13 +24,16 @@
           [:div {:class "dropped-notice"}
             "No good, huh?  This won't show up after today."])])
 
+(defn signature [name]
+  [:div {:class "signature"} name])
+
 (defn waiting-message []
   [:div {:class "waiting"}
     [:div "You are encouraged to take this delay in loading your data as an
            opportunity to sit and contemplate existence."]
     [:div "Should the delay (or existence) persist longer than expected,
            take two aspirin and refresh the page."]
-    [:div {:class "signature"} "The Mgt."]])
+    [signature "The Mgt."]])
 
 (defn todays-remembrance []
   (if (nil? @app-state/remembrance)
@@ -40,6 +43,18 @@
           [remembrance-title title url]
           [remembrance-preview preview]
           [remembrance-actions dropped-on]])))
+
+(defn poem [& lines]
+  [:div {:class "poem"}
+    (map #(vector :div {:class "line"} %1) lines)])
+
+(defn four-oh-four []
+  [:div
+    [poem "Yesterday upon the stair"
+          "I saw a man who wasn't there"
+          "He wasn't there again today"
+          "I wish that man would go away"]
+    [signature "Hughes Means"]])
 
 (defn layout [content]
   [:div {:class "container"}
