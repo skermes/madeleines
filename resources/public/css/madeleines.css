@@ -39,6 +39,7 @@ h2 {
 .preview {
   text-align: justify;
   font-family: 'Open Sans', sans-serif;
+  color: #333;
 }
 
 input[type="text"] {
