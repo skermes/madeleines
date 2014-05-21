@@ -41,8 +41,8 @@
           [remembrance-preview preview]
           [remembrance-actions dropped-on]])))
 
-(defn app []
+(defn layout [content]
   [:div {:class "container"}
     [header]
-    [todays-remembrance]
+    content
     [footer]])
