@@ -1,13 +1,20 @@
 (ns madeleines.components
-  (:require [madeleines.app-state :as app-state]))
+  (:require [madeleines.app-state :as app-state]
+            [madeleines.events :refer [prevent-and]]
+            [madeleines.router :as router]))
+
+(defn link [path text]
+  [:a {:href path
+       :on-click (prevent-and #(router/change-path! path))}
+    text])
 
 (defn header []
   [:h1
-    [:a {:href "/"} "Madeleines"]])
+    [link router/root-path "Madeleines"]])
 
 (defn footer []
   [:div {:class "footer"}
-    [:a {:href "/bake"} "bake"]])
+    [link router/bake-path "bake"]])
 
 (defn remembrance-title [title url]
   [:h2

@@ -1,10 +1,12 @@
 (ns madeleines.router
-  (:require [madeleines.components :as components]
-            [madeleines.app-state :as app-state]))
+  (:require [madeleines.app-state :as app-state]))
 
 (defn current-path []
   (.-pathname js/location))
 
-(defn component-for-path [path]
-  (condp = path
-         "/" components/todays-remembrance))
+(def root-path "/")
+(def bake-path "/bake")
+
+(defn change-path! [path]
+  (.pushState js/history nil nil path)
+  (app-state/new-path! path))

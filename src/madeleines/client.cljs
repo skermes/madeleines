@@ -5,8 +5,13 @@
             [madeleines.app-state :as app-state]
             [reagent.core :as reagent]))
 
+(defn component-for-path [path]
+  (condp = path
+         router/root-path components/todays-remembrance
+         components/four-oh-four))
+
 (defn app []
-  (let [main-component (router/component-for-path @app-state/path)]
+  (let [main-component (component-for-path @app-state/path)]
     [components/layout [main-component]]))
 
 (defn ^:export run []
