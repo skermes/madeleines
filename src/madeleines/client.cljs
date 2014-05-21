@@ -8,6 +8,7 @@
 (defn component-for-path [path]
   (condp = path
          router/root-path components/todays-remembrance
+         router/bake-path components/bake-new-remembrance
          components/four-oh-four))
 
 (defn app []

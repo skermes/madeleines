@@ -52,6 +52,11 @@
           [remembrance-preview preview]
           [remembrance-actions dropped-on]])))
 
+(defn bake-new-remembrance []
+  [:form {:method "post" :action router/bake-path}
+    [:input {:type "text" :name "url"}]
+    [:input {:type "submit" :value "bake"}]])
+
 (defn poem [& lines]
   [:div {:class "poem"}
     (map #(vector :div {:class "line"} %1) lines)])
