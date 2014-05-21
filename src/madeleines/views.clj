@@ -1,8 +1,7 @@
 (ns madeleines.views
   (:use [hiccup core page element form])
   (:use madeleines.views.partials)
-  (:use madeleines.views.layouts)
-  (:require [hiccup.page :refer [html5 include-css include-js]]))
+  (:use madeleines.views.layouts))
 
 (defn js-client-page []
   (html5
