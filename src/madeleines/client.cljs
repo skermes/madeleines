@@ -28,14 +28,17 @@
           [:div {:class "dropped-notice"}
             "No good, huh?  This won't show up after today."])])
 
+(defn waiting-message []
+  [:div {:class "waiting"}
+    [:div "You are encouraged to take this delay in loading your data as an
+           opportunity to sit and contemplate existence."]
+    [:div "Should the delay (or existence) persist longer than expected,
+           take two aspirin and refresh the page."]
+    [:div {:class "signature"} "The Mgt."]])
+
 (defn todays-remembrance []
   (if (nil? @remembrance)
-      [:div {:class "waiting"}
-        [:div "You are encouraged to take this delay in loading your data as an
-               opportunity to sit and contemplate existence."]
-        [:div "Should the delay (or existence) persist longer than expected,
-               take two aspirin and refresh the page."]
-        [:div {:class "signature"} "The Mgt."]]
+      [waiting-message]
       (let [{:keys [title url preview dropped-on]} @remembrance]
         [:div
           [remembrance-title title url]
