@@ -1,9 +1,8 @@
 (ns madeleines.client
-  (:require [reagent.core :as reagent :refer [atom]]
+  (:require [madeleines.app-state :as app-state]
+            [reagent.core :as reagent]
             [clojure.string :refer [replace]]
             [goog.net.XhrIo]))
-
-(def remembrance (atom nil))
 
 (defn header []
   [:h1
@@ -37,9 +36,9 @@
     [:div {:class "signature"} "The Mgt."]])
 
 (defn todays-remembrance []
-  (if (nil? @remembrance)
+  (if (nil? @app-state/remembrance)
       [waiting-message]
-      (let [{:keys [title url preview dropped-on]} @remembrance]
+      (let [{:keys [title url preview dropped-on]} @app-state/remembrance]
         [:div
           [remembrance-title title url]
           [remembrance-preview preview]
@@ -71,4 +70,5 @@
        js->clj
        keywordify-keys))
 
-(.send goog.net.XhrIo "/api/v1/bite" #(reset! remembrance (load-ajax-json %)))
+(.send goog.net.XhrIo "/api/v1/bite"
+                      #(app-state/new-remembrance! (load-ajax-json %)))
