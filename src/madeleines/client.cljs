@@ -4,6 +4,19 @@
 
 (def remembrance (atom nil))
 
+(defn header []
+  [:h1
+    [:a {:href "/"} "Madeleines"]])
+
+(defn footer []
+  [:div {:class "footer"}
+    [:a {:href "/bake"} "bake"]])
+
+(defn app []
+  [:div {:class "container"}
+    [header]
+    [footer]])
+
 (defn keywordify [s]
   (-> s
       (replace "_" "-")
