@@ -12,9 +12,32 @@
   [:div {:class "footer"}
     [:a {:href "/bake"} "bake"]])
 
+(defn remembrance-title [title url]
+  [:h2
+    [:a {:href url} title]])
+
+(defn remembrance-preview [preview]
+  [:div {:class "preview"} preview])
+
+(defn remembrance-actions [dropped-on ]
+    [:div {:class "actions"}
+      (if (nil? dropped-on)
+          [:form {:class "action-drop" :method "delete" :action "/"}
+            [:input {:type "submit" :value "drop"}]]
+          [:div {:class "dropped-notice"}
+            "No good, huh?  This won't show up after today."])])
+
+(defn todays-remembrance []
+  (let [{:keys [title url preview dropped-on]} @remembrance]
+    [:div
+      [remembrance-title title url]
+      [remembrance-preview preview]
+      [remembrance-actions dropped-on]]))
+
 (defn app []
   [:div {:class "container"}
     [header]
+    [todays-remembrance]
     [footer]])
 
 (defn ^:export run []
