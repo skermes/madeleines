@@ -26,7 +26,8 @@
 (defn remembrance-actions [dropped-on ]
     [:div {:class "actions"}
       (if (nil? dropped-on)
-          [:form {:class "action-drop" :method "delete" :action "/"}
+          [:form {:class "action-drop" :method "delete"
+                  :action router/root-path}
             [:input {:type "submit" :value "drop"}]]
           [:div {:class "dropped-notice"}
             "No good, huh?  This won't show up after today."])])
