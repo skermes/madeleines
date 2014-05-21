@@ -9,7 +9,9 @@
       [:title "Madeleines"]
       (include-css "/css/madeleines.css")]
     [:body
-      (include-js "/js/madeleines.js")]))
+      (include-js "/js/madeleines.js")
+      [:script {:type "text/javascript"}
+        "madeleines.client.run()"]]))
 
 (defn index-page [bite]
   (let [{title :title url :url preview :preview dropped-on :dropped_on} bite]

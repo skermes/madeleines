@@ -17,6 +17,9 @@
     [header]
     [footer]])
 
+(defn ^:export run []
+  (reagent/render-component [app] (.-body js/document)))
+
 (defn keywordify [s]
   (-> s
       (replace "_" "-")
