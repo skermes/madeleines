@@ -8,18 +8,13 @@
   (:require [ring.adapter.jetty :as jetty]))
 
 (defroutes app-routes
-  (GET "/" [] (js-client-page))
-  (DELETE "/" [] (index-page (drop-bite)))
-  (GET "/bake" [] (bake-page))
-  (POST "/bake" [url] (bake-page (bake url)))
-
   (context "/api/v1" []
     (GET "/bite" [] (json/write-str (bite)))
     (POST "/drop" [] (json/write-str (drop-bite)))
     (POST "/bake" [url] (json/write-str {:status (bake url)})))
 
   (route/resources "/")
-  (route/not-found (four-oh-four-page)))
+  (route/not-found (js-client-page)))
 
 (def app
   (handler/site app-routes))
