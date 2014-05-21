@@ -127,3 +127,20 @@ input[type="submit"]:hover,
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
 }
+
+.waiting {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 300;
+  color: #556270;
+  font-size: 1.2em;
+  width: 75%;
+  margin: auto;
+}
+
+.waiting div {
+  margin-bottom: 1rem;
+}
+
+.waiting .signature {
+  text-align: right;
+}

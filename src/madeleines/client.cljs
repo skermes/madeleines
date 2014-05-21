@@ -28,11 +28,18 @@
             "No good, huh?  This won't show up after today."])])
 
 (defn todays-remembrance []
-  (let [{:keys [title url preview dropped-on]} @remembrance]
-    [:div
-      [remembrance-title title url]
-      [remembrance-preview preview]
-      [remembrance-actions dropped-on]]))
+  (if (nil? @remembrance)
+      [:div {:class "waiting"}
+        [:div "You are encouraged to take this delay in loading your data as an
+               opportunity to sit and contemplate existence."]
+        [:div "Should the delay (or existence) persist longer than expected,
+               take two aspirin and refresh the page."]
+        [:div {:class "signature"} "The Mgt."]]
+      (let [{:keys [title url preview dropped-on]} @remembrance]
+        [:div
+          [remembrance-title title url]
+          [remembrance-preview preview]
+          [remembrance-actions dropped-on]])))
 
 (defn app []
   [:div {:class "container"}
@@ -62,5 +69,5 @@
        \"id\": 4}"
      (.parse js/JSON)
      js->clj
-     keywordify-keys
-     (reset! remembrance))
+     keywordify-keys)
+     ; (reset! remembrance)))
