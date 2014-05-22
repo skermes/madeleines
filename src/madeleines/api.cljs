@@ -1,5 +1,7 @@
 (ns madeleines.api
   (:require [madeleines.app-state :as app-state]
+            [madeleines.router :refer
+              [api-bite-path api-bake-path api-drop-path]]
             [clojure.string :refer [replace]]
             [goog.net.XhrIo]))
 
@@ -26,16 +28,16 @@
   (-> string (js/encodeURIComponent) (replace "+" "%20")))
 
 (defn fetch-todays-remembrance! []
-  (.send goog.net.XhrIo "/api/v1/bite"
+  (.send goog.net.XhrIo api-bite-path
                          #(app-state/new-remembrance! (ajax->clj %))))
 
 (defn drop-todays-remembrance! []
-  (.send goog.net.XhrIo "/api/v1/drop"
+  (.send goog.net.XhrIo api-drop-path
                         #(app-state/new-remembrance! (ajax->clj %))
                         "POST"))
 
 (defn bake-remembrance! [url]
-  (.send goog.net.XhrIo "/api/v1/bake"
+  (.send goog.net.XhrIo api-bake-path
                         #(app-state/new-baking-status! (ajax->clj %))
                         "POST"
                         (str "url=" (url-encode url))))
