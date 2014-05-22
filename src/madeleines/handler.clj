@@ -13,6 +13,10 @@
     (POST "/drop" [] (json/write-str (drop-bite)))
     (POST "/bake" [url] (json/write-str {:status (bake url)})))
 
+  ;; route/resources seems to be taking control of GET / in production.  As far
+  ;; as I can see, there's not file that should be triggering it, and it doesn't
+  ;; happen in development, so I'm not sure whats up.  Google has nothing.
+  (GET "/" [] (js-client-page))
   (route/resources "/")
   (route/not-found (js-client-page)))
 
