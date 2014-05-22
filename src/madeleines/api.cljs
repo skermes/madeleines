@@ -23,3 +23,8 @@
 (defn fetch-todays-remembrance! []
   (.send goog.net.XhrIo "/api/v1/bite"
                          #(app-state/new-remembrance! (ajax->clj %))))
+
+(defn drop-todays-remembrance! []
+  (.send goog.net.XhrIo "/api/v1/drop"
+                        #(app-state/new-remembrance! (ajax->clj %))
+                        "POST"))

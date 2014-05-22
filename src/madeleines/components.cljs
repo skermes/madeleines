@@ -1,7 +1,8 @@
 (ns madeleines.components
   (:require [madeleines.app-state :as app-state]
             [madeleines.events :refer [prevent-and]]
-            [madeleines.router :as router]))
+            [madeleines.router :as router]
+            [madeleines.api :as api]))
 
 (defn link [path text]
   [:a {:href path
@@ -27,7 +28,8 @@
     [:div {:class "actions"}
       (if (nil? dropped-on)
           [:form {:class "action-drop" :method "delete"
-                  :action router/root-path}
+                  :action router/root-path
+                  :on-submit (prevent-and api/drop-todays-remembrance!)}
             [:input {:type "submit" :value "drop"}]]
           [:div {:class "dropped-notice"}
             "No good, huh?  This won't show up after today."])])
