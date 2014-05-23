@@ -5,7 +5,7 @@
   (.-pathname js/location))
 
 (defn api-path [path]
-  (str "/api/vi"))
+  (str "/api/v1" path))
 
 (def root-path "/")
 (def bake-path "/bake")
