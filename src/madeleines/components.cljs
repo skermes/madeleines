@@ -20,7 +20,7 @@
 
 (defn remembrance-title [title url]
   [:h2
-    [:a {:href url} title]])
+    [:a {:href url} (if (empty? title) url title)]])
 
 (defn remembrance-preview [preview]
   [:div {:class "preview"} preview])
