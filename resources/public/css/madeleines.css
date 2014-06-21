@@ -65,6 +65,11 @@ input[type="submit"] {
   font-size: 150%;
   margin-top: .5em;
   display: block;
+  outline: none;
+}
+
+input[type="submit"]::-moz-focus-inner {
+  border: none;
 }
 
 input[type="submit"]:hover,
