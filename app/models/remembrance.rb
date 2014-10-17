@@ -4,6 +4,7 @@ CANDIDATE_QUERY = 'remembered_on < ? and
 class Remembrance < ActiveRecord::Base
   def self.todays_candidates
     Remembrance.where(CANDIDATE_QUERY, Date.today, Date.today)
+               .order(:id)
   end
 
   def self.todays_prng
