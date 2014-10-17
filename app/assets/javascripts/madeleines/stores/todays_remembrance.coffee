@@ -1,6 +1,6 @@
 TodaysRemembrance = new Hippodrome.Store
   initialize: ->
-    @remembrance = {}
+    @_remembrance = undefined
 
   dispatches: [{
     action: Madeleines.Actions.updateRemembrance
@@ -8,10 +8,10 @@ TodaysRemembrance = new Hippodrome.Store
   }]
 
   updateRemembrance: (payload) ->
-    @remembrance = payload.remembrance
+    @_remembrance = payload.remembrance
     @trigger()
 
   remembrance: ->
-    @remembrance
+    @_remembrance
 
 Madeleines.Stores.TodaysRemembrance = TodaysRemembrance
