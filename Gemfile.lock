@@ -39,14 +39,14 @@ GEM
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
+    hippodrome (0.0.10)
+      coffee-rails (~> 4.0.1)
+      lodash-rails (~> 2.4.1)
+      railties (~> 4.0)
     i18n (0.6.11)
-    jbuilder (1.5.3)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
-    jquery-rails (3.1.2)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
     json (1.8.1)
+    lodash-rails (2.4.1)
+      railties (>= 3.1)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.2)
@@ -74,12 +74,6 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
-    sass (3.2.19)
-    sass-rails (4.0.3)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
-      sprockets-rails (~> 2.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -92,11 +86,13 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    stylus (1.0.1)
+      execjs
+      stylus-source
+    stylus-source (0.42.2)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    turbolinks (2.4.0)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -108,11 +104,9 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  jbuilder (~> 1.2)
-  jquery-rails
+  hippodrome
   pg
   rails (~> 4)
-  sass-rails (~> 4.0.2)
   sdoc
-  turbolinks
+  stylus
   uglifier (>= 1.3.0)
