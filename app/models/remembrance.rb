@@ -16,4 +16,10 @@ class Remembrance < ActiveRecord::Base
     index = random.rand(candidates.count)
     candidates[index]
   end
+
+  def as_json(options={})
+    json = super(only: [:url, :title, :preview])
+    json['is_dropped'] = !self.dropped_on.nil?
+    json
+  end
 end
