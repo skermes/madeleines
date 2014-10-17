@@ -3,6 +3,7 @@
 App = React.createClass
   displayName: 'App'
   render: ->
-    div {}, 'This is Madeleines'
+    div {className: 'madeleines'},
+      Madeleines.Components.TopBar()
 
 Madeleines.Components.App = App
