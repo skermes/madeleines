@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Platform stuff
 gem 'rails', '~> 4'
+gem 'pry-rails'
 
 # Database stuff
 gem 'pg'
