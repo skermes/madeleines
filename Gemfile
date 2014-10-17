@@ -14,6 +14,7 @@ gem 'stylus'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'lodash-rails'
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'hippodrome'
 
 group :doc do

@@ -11,5 +11,6 @@
 // about supported directives.
 //
 //= require lodash
+//= require react
 //= require hippodrome
 //= require_tree .
