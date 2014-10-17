@@ -13,4 +13,4 @@
 //= require lodash
 //= require react
 //= require hippodrome
-//= require_tree .
+//= require ./madeleines/madeleines
