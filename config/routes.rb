@@ -1,4 +1,6 @@
 Madeleines::Application.routes.draw do
+  get '/' => 'home#index'
+
   namespace :api do
     namespace :v1 do
       get 'bite' => 'remembrances#bite'
