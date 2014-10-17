@@ -1,6 +1,6 @@
 # Assume there's only one CSRF token.  If there's more than one, we're
 # probably more screwed than this script can handle anyway.
-authenticityToken = document.getElementsByName('csrf-token')[0].content
+authenticityToken = -> document.getElementsByName('csrf-token')[0].content
 
 Http = {
   request: (method, url, data, success, error) ->
@@ -9,7 +9,7 @@ Http = {
     xhr.responseType = 'json'
     xhr.setRequestHeader('Accept', 'application/json, text/javascript, */*; q=0.01')
     xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.setRequestHeader('X-CSRF-Token', authenticityToken)
+    xhr.setRequestHeader('X-CSRF-Token', authenticityToken())
 
     xhr.onreadystatechange = (xhrEvent) ->
       if xhr.readyState == 4
