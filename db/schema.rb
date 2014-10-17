@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20141017033527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "old_remembrances", force: true do |t|
-    t.string "url",           limit: nil
-    t.string "title",         limit: nil
-    t.text   "preview"
-    t.date   "remembered_on"
-    t.date   "dropped_on"
-  end
-
   create_table "remembrances", force: true do |t|
     t.string   "url"
     t.string   "title"
