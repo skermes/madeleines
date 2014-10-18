@@ -4,6 +4,9 @@ class Api::V1::RemembrancesController < ApplicationController
   end
 
   def drop
+    todays = Remembrance.bite
+    todays.drop
+    render :json => todays
   end
 
   def bake

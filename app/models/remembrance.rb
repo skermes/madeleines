@@ -18,6 +18,11 @@ class Remembrance < ActiveRecord::Base
     candidates[index]
   end
 
+  def drop
+    self.dropped_on = Date.today
+    self.save
+  end
+
   def as_json(options={})
     json = super(only: [:url, :title, :preview])
     json['is_dropped'] = !self.dropped_on.nil?
