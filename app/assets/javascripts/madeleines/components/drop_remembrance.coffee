@@ -10,10 +10,16 @@ DropRemembrance = React.createClass
       message = 'Don\'t want this link?'
       verb = 'Drop It'
 
+    if @props.pending
+      verb = 'Saving...'
+
     div {className: 'drop-remembrance'},
       message,
-      button {className: 'button drop-remembrance-button', onClick: @onClick},
-        verb
+      button {
+        className: 'button drop-remembrance-button',
+        onClick: @onClick,
+        disabled: @props.pending
+        }, verb
 
   onClick: ->
     if @props.remembrance.is_dropped
