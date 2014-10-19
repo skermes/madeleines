@@ -23,6 +23,11 @@ class Remembrance < ActiveRecord::Base
     self.save
   end
 
+  def pick_up
+    self.dropped_on = nil
+    self.save
+  end
+
   def as_json(options={})
     json = super(only: [:url, :title, :preview])
     json['is_dropped'] = !self.dropped_on.nil?

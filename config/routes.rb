@@ -5,6 +5,7 @@ Madeleines::Application.routes.draw do
     namespace :v1 do
       get 'bite' => 'remembrances#bite'
       post 'drop' => 'remembrances#drop'
+      post 'pick-up' => 'remembrances#pick_up'
       post 'bake' => 'remembrances#bake'
     end
   end
