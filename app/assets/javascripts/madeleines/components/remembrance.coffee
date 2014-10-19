@@ -1,20 +1,7 @@
-{TodaysRemembrance} = Madeleines.Stores
 {div} = React.DOM
 
 Remembrance = React.createClass
   displayName: 'Remembrance'
-
-  mixins: [
-    TodaysRemembrance.listen('remembranceChange')
-  ]
-
-  getInitialState: ->
-    return {
-      remembrance: TodaysRemembrance.remembrance()
-    }
-
-  remembranceChange: ->
-    @setState({remembrance: TodaysRemembrance.remembrance()})
 
   render: ->
     {LoadingRemembrance
@@ -22,12 +9,12 @@ Remembrance = React.createClass
      RemembrancePreview,
      DropRemembrance} = Madeleines.Components
 
-    if not @state.remembrance
+    if not @props.remembrance
       return LoadingRemembrance()
 
     div {className: 'remembrance'},
-      RemembranceTitle({remembrance: @state.remembrance}),
-      RemembrancePreview({remembrance: @state.remembrance}),
-      DropRemembrance({remembrance: @state.remembrance})
+      RemembranceTitle({remembrance: @props.remembrance}),
+      RemembrancePreview({remembrance: @props.remembrance}),
+      DropRemembrance({remembrance: @props.remembrance})
 
 Madeleines.Components.Remembrance = Remembrance
