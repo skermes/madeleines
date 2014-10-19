@@ -10,6 +10,16 @@ Madeleines.Actions.updateRemembrance = new Hippodrome.Action(
   (remembrance) -> {remembrance: remembrance}
 )
 
+Madeleines.Actions.dropRemembrance = new Hippodrome.Action(
+  'drop Remembrance',
+  () -> {}
+)
+
+Madeleines.Actions.pickUpRemembrance = new Hippodrome.Action(
+  'pick Up Remembrance',
+  () -> {}
+)
+
 Madeleines.Actions.apiError = new Hippodrome.Action(
   'api Error',
   (response, status) -> {response: response, status: status}
