@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Platform stuff
 gem 'rails', '~> 4'
 gem 'pry-rails'
+gem 'quiet_assets', :group => :development
 
 # Database stuff
 gem 'pg'
