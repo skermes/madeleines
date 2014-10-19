@@ -19,13 +19,15 @@ Remembrance = React.createClass
   render: ->
     {LoadingRemembrance
      RemembranceTitle,
-     RemembrancePreview} = Madeleines.Components
+     RemembrancePreview,
+     DropRemembrance} = Madeleines.Components
 
     if not @state.remembrance
       return LoadingRemembrance()
 
     div {className: 'remembrance'},
       RemembranceTitle({remembrance: @state.remembrance}),
-      RemembrancePreview({remembrance: @state.remembrance})
+      RemembrancePreview({remembrance: @state.remembrance}),
+      DropRemembrance({remembrance: @state.remembrance})
 
 Madeleines.Components.Remembrance = Remembrance
