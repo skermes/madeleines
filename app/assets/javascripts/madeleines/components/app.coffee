@@ -14,8 +14,18 @@ App = React.createClass
     @setState({remembrance: TodaysRemembrance.remembrance()})
 
   render: ->
+    {TopBar,
+     Remembrance,
+     DropRemembrance} = Madeleines.Components
+
+    if @state.remembrance
+      drop = DropRemembrance({remembrance: @state.remembrance})
+    else
+      drop = undefined
+
     div {className: 'madeleines'},
-      Madeleines.Components.TopBar(),
-      Madeleines.Components.Remembrance({remembrance: @state.remembrance})
+      TopBar(),
+      Remembrance({remembrance: @state.remembrance}),
+      drop
 
 Madeleines.Components.App = App
