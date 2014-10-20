@@ -18,6 +18,9 @@ gem 'lodash-rails'
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'hippodrome'
 
+# Content extraction stuff
+gem 'pismo'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
