@@ -1,12 +1,15 @@
-// http://www.colourlovers.com/palette/148712/Gamebookers
+bg-color = #FFFFFF
+contrast-color = #F8ECC9
+button-color = #F1BBBA
+text-color = #6B5344
+link-color = #EB9F9F
 
-bg-color = #E9E9E9
-contrast-color = #FF9900
-text-color = #424242
-link-color = #3299BB
+ui-font()
+  font-family "Satisfy", sans-serif
+  color text-color
 
-madeleines-font()
-  font-family "Tex Gyre Adventor"
+content-font()
+  font-family "Open Sans", serif
   color text-color
 
 animation()
@@ -16,13 +19,10 @@ animation()
   animation arguments
 
 button.button
-  madeleines-font()
-  font-weight bold
-
-  background-color contrast-color
-
-  padding 0.25rem 1rem
+  ui-font()
+  font-size 1.25rem
+  background-color button-color
+  padding 0.5rem 1rem
 
   &[disabled]
-    background-color lighten(contrast-color, 30%)
-    color lighten(text-color, 30%)
+    background-color rgba(button-color, 60%)
