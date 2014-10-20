@@ -1,8 +1,11 @@
-{div, button} = React.DOM
+{pickUpRemembrance, dropRemembrance} = Madeleines.Actions
+{div} = React.DOM
 
 DropRemembrance = React.createClass
   displayName: 'Drop Remembrance'
   render: ->
+    {Button} = Madeleines.Components
+
     if @props.remembrance.is_dropped
       message = 'Actually, bring it back'
       verb = 'Pick It Up'
@@ -13,18 +16,14 @@ DropRemembrance = React.createClass
     if @props.pending
       verb = 'Saving...'
 
+    action = if @props.remembrance.is_dropped then pickUpRemembrance else dropRemembrance
+
     div {className: 'drop-remembrance'},
       message,
-      button {
-        className: 'button drop-remembrance-button',
-        onClick: @onClick,
+      Button {
+        className: 'drop-remembrance-button',
+        action: action,
         disabled: @props.pending
         }, verb
-
-  onClick: ->
-    if @props.remembrance.is_dropped
-      Madeleines.Actions.pickUpRemembrance()
-    else
-      Madeleines.Actions.dropRemembrance()
 
 Madeleines.Components.DropRemembrance = DropRemembrance

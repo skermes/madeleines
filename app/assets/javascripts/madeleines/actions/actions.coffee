@@ -5,6 +5,11 @@ Madeleines.Actions.startApp = new Hippodrome.Action(
   -> {}
 )
 
+Madeleines.Actions.viewBaker = new Hippodrome.Action(
+  'view Baker',
+  -> {}
+)
+
 Madeleines.Actions.updateRemembrance = new Hippodrome.Action(
   'update Remembrance',
   (remembrance) -> {remembrance: remembrance}
