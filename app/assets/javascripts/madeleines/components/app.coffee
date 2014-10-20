@@ -1,38 +1,12 @@
-{TodaysRemembrance, DropPickUpStatus} = Madeleines.Stores
 {div} = React.DOM
 
 App = React.createClass
   displayName: 'App'
-  mixins: [
-    TodaysRemembrance.listen('onRemembranceChange')
-    DropPickUpStatus.listen('onDropPickupChange')
-  ]
-  getInitialState: ->
-    return {
-      remembrance: TodaysRemembrance.remembrance()
-      dropPickUpPending: DropPickUpStatus.isPending()
-    }
-  onRemembranceChange: ->
-    @setState({remembrance: TodaysRemembrance.remembrance()})
-  onDropPickupChange: ->
-    @setState({dropPickUpPending: DropPickUpStatus.isPending()})
-
   render: ->
-    {TopBar,
-     Remembrance,
-     DropRemembrance} = Madeleines.Components
-
-    if @state.remembrance
-      drop = DropRemembrance({
-        remembrance: @state.remembrance
-        pending: @state.dropPickUpPending
-      })
-    else
-      drop = undefined
+    {TopBar, Remembrance} = Madeleines.Components
 
     div {className: 'madeleines'},
       TopBar(),
-      Remembrance({remembrance: @state.remembrance}),
-      drop
+      Remembrance()
 
 Madeleines.Components.App = App
