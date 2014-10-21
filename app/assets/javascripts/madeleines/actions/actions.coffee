@@ -30,6 +30,16 @@ Madeleines.Actions.bake = new Hippodrome.Action(
   (text) -> {url: text}
 )
 
+Madeleines.Actions.bakingSuccessful = new Hippodrome.Action(
+  'baking Successful',
+  () -> {}
+)
+
+Madeleines.Actions.bakingFailed = new Hippodrome.Action(
+  'baking Failed',
+  (reasons) -> {reasons: reasons}
+)
+
 Madeleines.Actions.apiError = new Hippodrome.Action(
   'api Error',
   (response, status) -> {response: response, status: status}

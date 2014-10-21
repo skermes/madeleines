@@ -3,7 +3,12 @@
 BakeRemembrance = new Hippodrome.SideEffect
   action: Madeleines.Actions.bake
   effect: (payload) ->
-    success = ->
+    success = (response) ->
+      if response.baked
+        Madeleines.Actions.bakingSuccessful()
+      else
+        Madeleines.Actions.bakingFailed(reasons: response.reasons)
+
     error = Madeleines.Actions.apiError
 
     bake({url: payload.url}, success, error)
