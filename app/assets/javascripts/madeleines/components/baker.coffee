@@ -1,16 +1,26 @@
 {bake} = Madeleines.Actions
+{BakingStatus} = Madeleines.Stores
 {div, span, input} = React.DOM
 
 Baker = React.createClass
   displayName: 'Baker'
+  mixins: [
+    BakingStatus.listen('onBakingStatus')
+  ]
   getInitialState: ->
     return {
       text: ''
+      pending: BakingStatus.isPending()
     }
+  onBakingStatus: ->
+    @setState(pending: BakingStatus.isPending())
+
   componentDidMount: ->
     this.refs.input.getDOMNode().focus()
   render: ->
     {Button} = Madeleines.Components
+
+    btnText = if @state.pending then 'Baking...' else 'Bake'
 
     div {className: 'baker'},
       span({className: 'baker-prompt'}, 'Something to remember...')
@@ -22,8 +32,9 @@ Baker = React.createClass
         ref: 'input'}),
       Button({
         className: 'baker-button'
+        disabled: @state.pending
         action: bake
-        args: [@state.text]}, 'Bake')
+        args: [@state.text]}, btnText)
 
   textChange: (event) ->
     @setState(text: event.target.value)
