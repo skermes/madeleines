@@ -48,8 +48,8 @@ test:
   encoding: unicode
   database: madeleines_test
   pool: 5
-  username: madeleines
-  password:
+  username: skermes
+  password: skermes
 
 production:
   adapter: postgresql
