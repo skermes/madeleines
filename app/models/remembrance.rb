@@ -18,6 +18,16 @@ class Remembrance < ActiveRecord::Base
     candidates[index]
   end
 
+  def self.from_linked_item(item)
+    r = Remembrance.new
+    r.url = item.url
+    r.title = item.title
+    r.preview = item.preview
+    r.remembered_on = Date.today
+    r.save
+    r
+  end
+
   def drop
     self.dropped_on = Date.today
     self.save

@@ -16,5 +16,13 @@ class Api::V1::RemembrancesController < ApplicationController
   end
 
   def bake
+    item = LinkedItem.from_url(params[:url])
+
+    if item.valid?
+      remembrance = Remembrance.from_linked_item(item)
+      render :json => {'baked' => true}
+    else
+      render :json => {'baked' => false, 'reasons' => item.errors}
+    end
   end
 end
