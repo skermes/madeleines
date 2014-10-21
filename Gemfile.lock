@@ -160,6 +160,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   hippodrome
   lodash-rails
+  minitest
   pg
   pismo
   pry-rails

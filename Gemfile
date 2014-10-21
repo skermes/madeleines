@@ -4,7 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4'
 gem 'pry-rails'
 gem 'quiet_assets', :group => :development
-gem 'rspec-rails', :group => [:test, :development]
+
+# Test stuff
+group :test, :development do
+  gem 'minitest'
+  gem 'rspec-rails'
+end
 
 # Database stuff
 gem 'pg'
