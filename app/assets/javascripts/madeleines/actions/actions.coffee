@@ -25,6 +25,11 @@ Madeleines.Actions.pickUpRemembrance = new Hippodrome.Action(
   () -> {}
 )
 
+Madeleines.Actions.bake = new Hippodrome.Action(
+  'bake',
+  (text) -> {url: text}
+)
+
 Madeleines.Actions.apiError = new Hippodrome.Action(
   'api Error',
   (response, status) -> {response: response, status: status}
