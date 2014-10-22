@@ -7,7 +7,7 @@ BakeRemembrance = new Hippodrome.SideEffect
       if response.baked
         Madeleines.Actions.bakingSuccessful()
       else
-        Madeleines.Actions.bakingFailed(reasons: response.reasons)
+        Madeleines.Actions.bakingFailed(response.reasons)
 
     error = Madeleines.Actions.apiError
 

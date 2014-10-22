@@ -22,16 +22,16 @@ BakingStatus = new Hippodrome.Store
     @trigger()
   failure: (payload) ->
     @_status = 'failure'
-    @_failureReason = payload.reason
+    @_failureReasons = payload.reasons
     @trigger()
 
   isPending: ->
     @_status == 'pending'
   isSuccessful: ->
     @_status == 'successful'
-  isFailure: ->
-    @_status == 'failure'
-  failureReason: ->
+  isDone: ->
+    @_status == 'failure' or @_status == 'successful'
+  failureReasons: ->
     @_failureReasons
 
 Madeleines.Stores.BakingStatus = BakingStatus

@@ -13,16 +13,27 @@ Baker = React.createClass
       pending: BakingStatus.isPending()
     }
   onBakingStatus: ->
-    @setState(pending: BakingStatus.isPending())
+    text = if BakingStatus.isSuccessful() then '' else text
+    @setState(
+      text: text
+      pending: BakingStatus.isPending()
+    )
 
   componentDidMount: ->
     this.refs.input.getDOMNode().focus()
   render: ->
-    {Button} = Madeleines.Components
+    {Button, BakingStatusMessage} = Madeleines.Components
+
+    if BakingStatus.isDone()
+      message = BakingStatusMessage({
+        successful: BakingStatus.isSuccessful()
+        reasons: BakingStatus.failureReasons()
+      })
 
     btnText = if @state.pending then 'Baking...' else 'Bake'
 
     div {className: 'baker'},
+      message
       span({className: 'baker-prompt'}, 'Something to remember...')
       input({
         className: 'baker-input'
