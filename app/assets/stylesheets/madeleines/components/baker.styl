@@ -1,13 +1,37 @@
 @import "global"
 
+@keyframes message-slide-down
+  0%
+    top -2.5rem
+  100%
+    top 0
+
 .baker
   content-font()
 
   padding 0 0.5rem
+  position relative
+  overflow hidden
+
+  baking-status-message()
+    position absolute
+    left 0
+    right 0
+    text-align center
+    color bg-color
+    animation message-slide-down 0.5s
+
+  .baking-status-message-successful
+    baking-status-message()
+    background-color success-color
+
+  .baking-status-message-failed
+    baking-status-message()
+    background-color error-color
 
   .baker-prompt
     display block
-    margin-top 2.5rem
+    margin-top 3.5rem
 
   .baker-input
     display block
