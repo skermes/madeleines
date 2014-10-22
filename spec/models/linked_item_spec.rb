@@ -20,4 +20,10 @@ describe LinkedItem do
 
     expect(item.valid?).to be_true
   end
+
+  it 'is valid when leaving the protocol off' do
+    item = LinkedItem.from_url('example.com')
+
+    expect(item.valid?).to be_true
+  end
 end

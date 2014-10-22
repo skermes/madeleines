@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'pismo'
 
+PROTOCOL_REGEX = /^(https?|ftp):\/\//
 TEXT_CONTENT_REGEX = /^text\//
 
 class LinkedItem
@@ -17,6 +18,12 @@ class LinkedItem
   end
 
   def self.from_url(url)
+    # There are a lot more ways someone could screw up a url, but this is
+    # the most common.
+    if not url =~ PROTOCOL_REGEX
+      url = "http://#{url}"
+    end
+
     item = LinkedItem.new(url)
 
     file = nil
