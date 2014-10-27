@@ -3,7 +3,7 @@
 #= require ./api/api
 #= require ./actions/actions
 #= require ./stores/stores
-#= require ./side_effects/side_effects
+#= require ./deferred_tasks/deferred_tasks
 #= require ./components/components
 
 window.Madeleines = {}
