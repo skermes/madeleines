@@ -1,8 +1,9 @@
 {updateRemembrance, apiError} = Madeleines.Actions
 
-FetchRemembrance = new Hippodrome.SideEffect
+FetchRemembrance = new Hippodrome.DeferredTask
+  displayName: 'Fetch Remembrance'
   action: Madeleines.Actions.startApp,
-  effect: (payload) ->
+  task: (payload) ->
     Madeleines.Api.Remembrances.bite(updateRemembrance, apiError)
 
-Madeleines.SideEffects.FetchRemembrance = FetchRemembrance
+Madeleines.Tasks.FetchRemembrance = FetchRemembrance

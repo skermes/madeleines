@@ -1,8 +1,9 @@
 {bake} = Madeleines.Api.Remembrances
 
-BakeRemembrance = new Hippodrome.SideEffect
+BakeRemembrance = new Hippodrome.DeferredTask
+  displayName: 'Bake Remembrance'
   action: Madeleines.Actions.bake
-  effect: (payload) ->
+  task: (payload) ->
     success = (response) ->
       if response.baked
         Madeleines.Actions.bakingSuccessful()
@@ -13,4 +14,4 @@ BakeRemembrance = new Hippodrome.SideEffect
 
     bake({url: payload.url}, success, error)
 
-Madeleines.SideEffects.BakeRemembrance = BakeRemembrance
+Madeleines.Tasks.BakeRemembrance = BakeRemembrance

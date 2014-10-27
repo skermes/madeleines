@@ -11,10 +11,11 @@ Router = new Hippodrome.Store
     @_route = 'bake'
     @trigger()
 
-  appPage: ->
-    pages =
-      '': 'home'
-      'bake': 'baker'
-    pages[@_route]
+  public:
+    appPage: ->
+      pages =
+        '': 'home'
+        'bake': 'baker'
+      pages[@_route]
 
 Madeleines.Stores.Router = Router

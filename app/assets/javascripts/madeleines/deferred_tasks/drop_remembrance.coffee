@@ -1,8 +1,9 @@
 {updateRemembrance, apiError} = Madeleines.Actions
 
-DropRemembrance = new Hippodrome.SideEffect
+DropRemembrance = new Hippodrome.DeferredTask
+  displayName: 'Drop Remembrance'
   action: Madeleines.Actions.dropRemembrance
-  effect: (payload) ->
+  task: (payload) ->
     Madeleines.Api.Remembrances.drop(undefined, updateRemembrance, apiError)
 
-Madeleines.SideEffects.DropRemembrance = DropRemembrance
+Madeleines.Tasks.DropRemembrance = DropRemembrance

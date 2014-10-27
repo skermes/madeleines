@@ -1,8 +1,9 @@
 {updateRemembrance, apiError} = Madeleines.Actions
 
-PickUpRemembrance = new Hippodrome.SideEffect
+PickUpRemembrance = new Hippodrome.DeferredTask
+  displayName: 'Pick Up Remembrance'
   action: Madeleines.Actions.pickUpRemembrance
-  effect: (payload) ->
+  task: (payload) ->
     Madeleines.Api.Remembrances.pickUp(undefined, updateRemembrance, apiError)
 
-Madeleines.SideEffects.PickUpRemembrance = PickUpRemembrance
+Madeleines.Tasks.PickUpRemembrance = PickUpRemembrance

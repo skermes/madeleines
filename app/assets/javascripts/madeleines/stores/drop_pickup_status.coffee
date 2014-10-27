@@ -20,7 +20,8 @@ DropPickUpStatus = new Hippodrome.Store
     @_status = 'completed'
     @trigger()
 
-  isPending: ->
-    @_status == 'pending'
+  public:
+    isPending: ->
+      @_status == 'pending'
 
 Madeleines.Stores.DropPickUpStatus = DropPickUpStatus

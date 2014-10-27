@@ -11,7 +11,8 @@ TodaysRemembrance = new Hippodrome.Store
     @_remembrance = payload.remembrance
     @trigger()
 
-  remembrance: ->
-    @_remembrance
+  public:
+    remembrance: ->
+      @_remembrance
 
 Madeleines.Stores.TodaysRemembrance = TodaysRemembrance
