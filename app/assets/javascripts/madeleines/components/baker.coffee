@@ -1,6 +1,6 @@
 {bake} = Madeleines.Actions
 {BakingStatus} = Madeleines.Stores
-{div, span, input} = React.DOM
+{div, span, form, input} = React.DOM
 
 Baker = React.createClass
   displayName: 'Baker'
@@ -35,19 +35,22 @@ Baker = React.createClass
     div {className: 'baker'},
       message
       span({className: 'baker-prompt'}, 'Something to remember...')
-      input({
-        className: 'baker-input'
-        type: 'text'
-        value: @state.text
-        onChange: @textChange
-        ref: 'input'}),
-      Button({
-        className: 'baker-button'
-        disabled: @state.pending
-        action: bake
-        args: [@state.text]}, btnText)
+      form {onSubmit: @submit},
+        input({
+          className: 'baker-input'
+          type: 'text'
+          value: @state.text
+          onChange: @textChange
+          ref: 'input'}),
+        Button({
+          className: 'baker-button'
+          disabled: @state.pending
+          action: bake
+          args: [@state.text]}, btnText)
 
   textChange: (event) ->
     @setState(text: event.target.value)
+  submit: (event) ->
+    bake(@state.text)
 
 Madeleines.Components.Baker = Baker
