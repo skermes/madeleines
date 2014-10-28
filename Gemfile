@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Platform stuff
+ruby '2.0.0'
 gem 'rails', '~> 4'
 gem 'pry-rails'
 gem 'quiet_assets', :group => :development
