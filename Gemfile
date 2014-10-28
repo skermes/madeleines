@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4'
 gem 'pry-rails'
 gem 'quiet_assets', :group => :development
+gem 'unicorn'
 
 # Test stuff
 group :test, :development do
