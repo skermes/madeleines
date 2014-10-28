@@ -28,7 +28,7 @@ App = React.createClass
       contents = FourOhFour()
 
     div {className: 'madeleines'},
-      TopBar(),
+      TopBar({currentPage: @state.page}),
       contents
 
 Madeleines.Components.App = App
