@@ -4,6 +4,8 @@ BakeRemembrance = new Hippodrome.DeferredTask
   displayName: 'Bake Remembrance'
   action: Madeleines.Actions.bake
   task: (payload) ->
+    url = payload.url.trim()
+
     success = (response) ->
       if response.baked
         Madeleines.Actions.bakingSuccessful()
@@ -12,6 +14,6 @@ BakeRemembrance = new Hippodrome.DeferredTask
 
     error = Madeleines.Actions.apiError
 
-    bake({url: payload.url}, success, error)
+    bake({url: url}, success, error)
 
 Madeleines.Tasks.BakeRemembrance = BakeRemembrance

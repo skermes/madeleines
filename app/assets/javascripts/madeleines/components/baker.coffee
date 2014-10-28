@@ -31,6 +31,7 @@ Baker = React.createClass
       })
 
     btnText = if @state.pending then 'Baking...' else 'Bake'
+    disable = @state.pending or (not @state.text) or @state.text.trim() == ''
 
     div {className: 'baker'},
       message
@@ -44,13 +45,15 @@ Baker = React.createClass
           ref: 'input'}),
         Button({
           className: 'baker-button'
-          disabled: @state.pending
+          disabled: disable
           action: bake
           args: [@state.text]}, btnText)
 
   textChange: (event) ->
     @setState(text: event.target.value)
   submit: (event) ->
-    bake(@state.text)
+    event.preventDefault()
+    if not @state.pending and @state.text.trim() != ''
+      bake(@state.text)
 
 Madeleines.Components.Baker = Baker
