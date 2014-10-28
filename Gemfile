@@ -6,6 +6,7 @@ gem 'rails', '~> 4'
 gem 'pry-rails'
 gem 'quiet_assets', :group => :development
 gem 'unicorn'
+gem 'rails_12factor'
 
 # Test stuff
 group :test, :development do
