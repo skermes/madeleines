@@ -17,6 +17,7 @@ gem 'pg'
 
 # Stylesheet stuff
 gem 'stylus'
+gem 'stylus-source', '0.33.0' # Newer version break on Heroku.
 
 # Javascript stuff
 gem 'uglifier', '>= 1.3.0'
