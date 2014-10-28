@@ -14,12 +14,18 @@ App = React.createClass
     @setState(page: Router.appPage())
 
   render: ->
-    {TopBar, Remembrance, Baker} = Madeleines.Components
+    {TopBar, Remembrance, Baker, FourOhFour} = Madeleines.Components
 
-    if @state.page == 'home'
+    if @state.page == 'none'
+      # Before we've gotten the first view* action from the url task, we can
+      # either show 404 or nothing.  I prefer nothing.
+      contents = undefined
+    else if @state.page == 'index'
       contents = Remembrance()
-    else if @state.page == 'baker'
+    else if @state.page == 'bake'
       contents = Baker()
+    else if @state.page == '404'
+      contents = FourOhFour()
 
     div {className: 'madeleines'},
       TopBar(),

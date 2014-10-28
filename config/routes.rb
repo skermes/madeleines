@@ -1,5 +1,6 @@
 Madeleines::Application.routes.draw do
   get '/' => 'home#index'
+  get '/bake' => 'home#index'
 
   namespace :api do
     namespace :v1 do
@@ -9,4 +10,6 @@ Madeleines::Application.routes.draw do
       post 'bake' => 'remembrances#bake'
     end
   end
+
+  get '*path' => 'home#four_oh_four'
 end

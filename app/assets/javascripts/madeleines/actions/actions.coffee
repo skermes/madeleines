@@ -8,8 +8,18 @@ Madeleines.Actions.startApp = new Hippodrome.Action(
   -> {}
 )
 
+Madeleines.Actions.viewIndex = new Hippodrome.Action(
+  'view Index',
+  -> {}
+)
+
 Madeleines.Actions.viewBaker = new Hippodrome.Action(
   'view Baker',
+  -> {}
+)
+
+Madeleines.Actions.view404 = new Hippodrome.Action(
+  'view 404',
   -> {}
 )
 
