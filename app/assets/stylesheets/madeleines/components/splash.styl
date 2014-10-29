@@ -4,11 +4,36 @@
   background-image url('/assets/splash-bg-phone.png')
   background-size cover
 
+  float-on-top()
+    position absolute
+    top 0
+    left 0
+    right 0
+
   .login-button
+    float-on-top()
     width 100%
 
+  .login-form
+    content-font()
+    float-on-top()
+    background-color bg-color
+    padding 0 0.5rem 0.5rem 0.5rem
+    border-bottom 0.25rem solid contrast-color
+
+    label,
+    input
+      display block
+
+    label,
+    input[type="submit"]
+      margin-top 0.5rem
+
+    input
+      width 100%
+
   .hero
-    margin-top 4rem
+    margin-top 6rem
     padding 0 0.5rem
 
     hero-line()
@@ -26,7 +51,7 @@
 
     .hero-line-pop
       hero-line()
-      color button-color
+      color contrast-color
       font-weight bold
       font-size 1.8rem
       width 19rem

@@ -12,10 +12,10 @@ HeroLine = React.createClass
 Splash = React.createClass
   displayName: 'Splash'
   render: ->
-    {Button} = Madeleines.Components
+    {LogInForm} = Madeleines.Components
 
     div {className: 'splash'},
-      Button({className: 'login-button'}, 'Log In'),
+      LogInForm()
       div {className: 'hero'},
         HeroLine({}, 'Bookmarking')
         HeroLine({}, 'lets you')

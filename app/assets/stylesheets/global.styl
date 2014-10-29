@@ -20,7 +20,8 @@ animation()
   -o-animation arguments
   animation arguments
 
-button.button
+button.button,
+input[type="submit"].button
   ui-font()
   color bg-color
   font-size 1.25rem
@@ -30,7 +31,9 @@ button.button
   &[disabled]
     background-color rgba(button-color, 60%)
 
-input[type="text"]
+input[type="text"],
+input[type="email"],
+input[type="password"]
   content-font()
   box-sizing border-box
   border 1px solid text-color

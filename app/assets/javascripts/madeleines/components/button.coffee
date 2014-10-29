@@ -10,7 +10,10 @@ Button = React.createClass
 
     button bprops, @props.children
 
-  onClick: ->
+  onClick: (event) ->
+    if @props.onClick
+      @props.onClick(event)
+
     if @props.action
       @props.action.apply(null, @props.args)
 
