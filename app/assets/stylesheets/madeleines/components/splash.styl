@@ -1,0 +1,32 @@
+@import "global"
+
+.splash
+  background-image url('/assets/splash-bg-phone.png')
+  background-size cover
+
+  .login-button
+    width 100%
+
+  .hero
+    margin-top 4rem
+    padding 0 0.5rem
+
+    hero-line()
+      content-font()
+      text-align justify
+      text-align-last justify
+      text-transform uppercase
+      margin auto
+
+    .hero-line-normal
+      hero-line()
+      color bg-color
+      font-size 1.5rem
+      width 16rem
+
+    .hero-line-pop
+      hero-line()
+      color button-color
+      font-weight bold
+      font-size 1.8rem
+      width 19rem
