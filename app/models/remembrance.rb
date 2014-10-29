@@ -2,6 +2,8 @@ CANDIDATE_QUERY = 'remembered_on < ? and
                    (dropped_on is null or dropped_on >= ?)'
 
 class Remembrance < ActiveRecord::Base
+  belongs_to :user, :inverse_of => :remembrances
+
   def self.todays_candidates
     Remembrance.where(CANDIDATE_QUERY, Date.today, Date.today)
                .order(:id)
