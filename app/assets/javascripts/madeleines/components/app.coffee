@@ -1,22 +1,30 @@
-{Router} = Madeleines.Stores
+{Router, CurrentUser} = Madeleines.Stores
 {div} = React.DOM
 
 App = React.createClass
   displayName: 'App'
   mixins: [
     Router.listen('onPageChange')
+    CurrentUser.listen('onUserChange')
   ]
   getInitialState: ->
     return {
       page: Router.appPage()
+      userId: CurrentUser.id()
     }
   onPageChange: ->
     @setState(page: Router.appPage())
+  onUserChange: ->
+    @setState(userId: CurrentUser.id())
 
   render: ->
-    {TopBar, Remembrance, Baker, FourOhFour} = Madeleines.Components
+    {TopBar, Remembrance, Baker, FourOhFour, Splash} = Madeleines.Components
 
-    if @state.page == 'none'
+    includeTopBar = true
+    if @state.userId == undefined
+      contents = Splash()
+      includeTopBar = false
+    else if @state.page == 'none'
       # Before we've gotten the first view* action from the url task, we can
       # either show 404 or nothing.  I prefer nothing.
       contents = undefined
@@ -28,7 +36,7 @@ App = React.createClass
       contents = FourOhFour()
 
     div {className: 'madeleines'},
-      TopBar({currentPage: @state.page}),
+      if includeTopBar then TopBar({currentPage: @state.page}) else undefined,
       contents
 
 Madeleines.Components.App = App

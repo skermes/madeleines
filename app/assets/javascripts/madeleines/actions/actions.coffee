@@ -5,7 +5,7 @@ Madeleines.Actions = {}
 
 Madeleines.Actions.startApp = new Hippodrome.Action(
   'start App',
-  -> {}
+  (userId) -> {userId: userId}
 )
 
 Madeleines.Actions.viewIndex = new Hippodrome.Action(

@@ -8,6 +8,6 @@
 
 window.Madeleines = {}
 
-Madeleines.start = (root) ->
+Madeleines.start = (root, userId) ->
   React.renderComponent(Madeleines.Components.App(), root)
-  Madeleines.Actions.startApp()
+  Madeleines.Actions.startApp(userId)

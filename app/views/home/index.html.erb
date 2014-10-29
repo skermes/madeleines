@@ -3,7 +3,8 @@
 <% end %>
 
 <%= content_for :javascript do %>
+  userId = <%= logged_in? ? current_user.id : 'undefined' %>;
   document.addEventListener('DOMContentLoaded', function() {
-    Madeleines.start(document.getElementById('root'));
+    Madeleines.start(document.getElementById('root'), userId);
   });
 <% end %>
