@@ -14,6 +14,9 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
+# App stuff
+gem 'sorcery'
+
 # Database stuff
 gem 'pg'
 
