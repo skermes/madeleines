@@ -2,8 +2,19 @@
 
 FetchRemembrance = new Hippodrome.DeferredTask
   displayName: 'Fetch Remembrance'
-  action: Madeleines.Actions.startApp,
-  task: (payload) ->
-    Madeleines.Api.Remembrances.bite(updateRemembrance, apiError)
+  initialize: ->
+    @_lastUserFetched = undefined
+  dispatches: [{
+    action: Madeleines.Actions.startApp
+    callback: 'fetchIfUserChanged'
+  },{
+    action: Madeleines.Actions.updateUser
+    callback: 'fetchIfUserChanged'
+  }]
+
+  fetchIfUserChanged: (payload) ->
+    if @_lastUserFetched != payload.userId
+      Madeleines.Api.Remembrances.bite(updateRemembrance, apiError)
+      @_lastUserFetched = payload.userId
 
 Madeleines.Tasks.FetchRemembrance = FetchRemembrance
