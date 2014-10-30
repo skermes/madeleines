@@ -4,6 +4,9 @@ Madeleines::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      post 'login' => 'sessions#create'
+      post 'logout' => 'sessions#destroy'
+
       get 'bite' => 'remembrances#bite'
       post 'drop' => 'remembrances#drop'
       post 'pick-up' => 'remembrances#pick_up'

@@ -4,10 +4,15 @@ CurrentUser = new Hippodrome.Store
     @_id = undefined
   dispatches: [{
     action: Madeleines.Actions.startApp
-    callback: (payload) ->
-      @_id = payload.id
-      @trigger()
+    callback: 'setUserId'
+  },{
+    action: Madeleines.Actions.updateUser
+    callback: 'setUserId'
   }]
+
+  setUserId: (payload) ->
+    @_id = payload.userId
+    @trigger()
 
   public:
     id: -> @_id
