@@ -13,19 +13,23 @@ class Remembrance < ActiveRecord::Base
     Random.new(Date.today.to_datetime.to_i)
   end
 
-  def self.bite
-    candidates = Remembrance.todays_candidates
+  def self.bite_for(user)
+    candidates = user.remembrances.todays_candidates
+
+    return nil if candidates.count == 0
+
     random = self.todays_prng
     index = random.rand(candidates.count)
     candidates[index]
   end
 
-  def self.from_linked_item(item)
+  def self.from_linked_item(item, user)
     r = Remembrance.new
     r.url = item.url
     r.title = item.title
     r.preview = item.preview
     r.remembered_on = Date.today
+    r.user = user
     r.save
     r
   end
