@@ -15,16 +15,16 @@ HowTo = React.createClass
       div({className: 'paragraph'}, 'If you don\'t like your link for the day,
         you can drop it with the button at the bottom.  You won\'t get a new
         link, but you\'ll never see that one again.')
-      img({className: 'screenshot', src: 'http://placehold.it/540x200'})
+      img({className: 'screenshot', src: '/assets/drop-it-phone.png'})
       div({className: 'paragraph'}, 'When you drop a link, the button changes
         to \'Pick It Up\', in case that was an accident.  Pick a link back up,
         and it\'ll stay in the rotation for another day.')
-      img({className: 'screenshot', src: 'http://placehold.it/540x200'})
+      img({className: 'screenshot', src: '/assets/pick-it-up-phone.png'})
       div({className: 'paragraph'}, 'Hit the \'Bake\' button on top to save a
         new link.  Just drop a link into the text box and hit the button.  That
         link will go into the pool with all your other saved links to be your
         day\'s link in the future.')
-      img({className: 'screenshot', src: 'http://placehold.it/540x960'})
+      img({className: 'screenshot', src: '/assets/baker-phone.png'})
       div({className: 'paragraph'}, 'And that\'s it.  One link a day.')
       div({className: 'title'}, 'In the future, maybe')
       div({className: 'paragraph'}, 'Daily notifications (email? sms?),
