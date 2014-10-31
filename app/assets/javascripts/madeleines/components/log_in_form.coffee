@@ -1,13 +1,21 @@
+{LoginFailed} = Madeleines.Stores
 {div, input, label, form} = React.DOM
 
 LogInForm = React.createClass
   displayName: 'Log In Form'
+  mixins: [
+    LoginFailed.listen('onLogin')
+  ]
   getInitialState: ->
     return {
       open: false
       email: ''
       password: ''
+      loginFailed: LoginFailed.hasFailed()
     }
+  onLogin: ->
+    @setState(loginFailed: LoginFailed.hasFailed())
+
   componentDidUpdate: (prevProps, prevState) ->
     if @state.open and not prevState.open
       @refs.emailInput.getDOMNode().focus()
@@ -15,12 +23,17 @@ LogInForm = React.createClass
     {Button} = Madeleines.Components
 
     if @state.open
-      form {className: 'login-form', onSubmit: @login},
-        label({htmlFor: 'login-email'}, 'Email'),
-        input({type: 'email', id: 'login-email', ref: 'emailInput', onChange: @emailChange, value: @state.email}),
-        label({htmlFor: 'login-password'}, 'Password'),
-        input({type: 'password', id: 'login-password', onChange: @passwordChange, value: @state.password})
-        input({type: 'submit', className: 'button', value: 'Log In'})
+      if @state.loginFailed
+        message = div({className: 'login-fail-message'}, 'Wrong username or password')
+
+      div {className: 'login-form'},
+        form({onSubmit: @login},
+          label({htmlFor: 'login-email'}, 'Email'),
+          input({type: 'email', id: 'login-email', ref: 'emailInput', onChange: @emailChange, value: @state.email}),
+          label({htmlFor: 'login-password'}, 'Password'),
+          input({type: 'password', id: 'login-password', onChange: @passwordChange, value: @state.password})
+          input({type: 'submit', className: 'button', value: 'Log In'})),
+        message
     else
       Button({className: 'login-button', onClick: @openForm}, 'Log In')
 

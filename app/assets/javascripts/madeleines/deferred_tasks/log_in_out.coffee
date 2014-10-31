@@ -1,4 +1,4 @@
-{updateUser, apiError} = Madeleines.Actions
+{updateUser, apiError, loginFailed} = Madeleines.Actions
 
 LogInOut = new Hippodrome.DeferredTask
   displayName: 'Log In Out'
@@ -13,7 +13,12 @@ LogInOut = new Hippodrome.DeferredTask
   login: (payload) ->
     data = {email: payload.email, password: payload.password}
     success = (response) -> updateUser(response.user)
-    Madeleines.Api.LogInOut.login(data, success, apiError)
+    error = (response, status) ->
+      if status == 401
+        loginFailed()
+      else
+        apiError(response, status)
+    Madeleines.Api.LogInOut.login(data, success, error)
 
   logout: (payload) ->
     success = (response) -> updateUser(undefined)

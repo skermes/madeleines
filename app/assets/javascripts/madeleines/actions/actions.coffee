@@ -13,6 +13,11 @@ Madeleines.Actions.login = new Hippodrome.Action(
   (email, password) -> {email: email, password: password}
 )
 
+Madeleines.Actions.loginFailed = new Hippodrome.Action(
+  'log In Failed',
+  -> {}
+)
+
 Madeleines.Actions.logout = new Hippodrome.Action(
   'log Out',
   -> {}
