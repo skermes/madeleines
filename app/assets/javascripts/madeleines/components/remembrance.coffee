@@ -10,10 +10,14 @@ Remembrance = React.createClass
   getInitialState: ->
     return {
       remembrance: TodaysRemembrance.remembrance()
+      remembrancePending: TodaysRemembrance.pending()
       dropPickupPending: DropPickUpStatus.isPending()
     }
   onRemembranceChange: ->
-    @setState(remembrance: TodaysRemembrance.remembrance())
+    @setState({
+      remembrance: TodaysRemembrance.remembrance()
+      remembrancePending: TodaysRemembrance.pending()
+    })
   onDropPickupChange: ->
     @setState(dropPickupPending: DropPickUpStatus.isPending())
 
@@ -21,10 +25,14 @@ Remembrance = React.createClass
     {LoadingRemembrance
      RemembranceTitle,
      RemembrancePreview,
-     DropRemembrance} = Madeleines.Components
+     DropRemembrance,
+     NoRemembrances} = Madeleines.Components
+
+    if @state.remembrancePending
+      return LoadingRemembrance()
 
     if not @state.remembrance
-      return LoadingRemembrance()
+      return NoRemembrances()
 
     div {className: 'remembrance'},
       RemembranceTitle({remembrance: @state.remembrance}),
