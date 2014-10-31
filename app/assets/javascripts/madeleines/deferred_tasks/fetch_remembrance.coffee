@@ -13,7 +13,7 @@ FetchRemembrance = new Hippodrome.DeferredTask
   }]
 
   fetchIfUserChanged: (payload) ->
-    if @_lastUserFetched != payload.userId
+    if payload.userId and  @_lastUserFetched != payload.userId
       Madeleines.Api.Remembrances.bite(updateRemembrance, apiError)
       @_lastUserFetched = payload.userId
 
