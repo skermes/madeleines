@@ -35,7 +35,6 @@ App = React.createClass
       contents = Baker()
     else if @state.page == 'howto'
       contents = HowTo()
-      includeTopBar = false
     else if @state.page == '404'
       contents = FourOhFour()
 
