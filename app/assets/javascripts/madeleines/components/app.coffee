@@ -18,7 +18,8 @@ App = React.createClass
     @setState(userId: CurrentUser.id())
 
   render: ->
-    {TopBar, Remembrance, Baker, FourOhFour, Splash} = Madeleines.Components
+    {TopBar, Remembrance, Baker, FourOhFour, Splash,
+     HowTo} = Madeleines.Components
 
     includeTopBar = true
     if @state.userId == undefined
@@ -32,6 +33,9 @@ App = React.createClass
       contents = Remembrance()
     else if @state.page == 'bake'
       contents = Baker()
+    else if @state.page == 'howto'
+      contents = HowTo()
+      includeTopBar = false
     else if @state.page == '404'
       contents = FourOhFour()
 

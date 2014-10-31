@@ -43,6 +43,11 @@ Madeleines.Actions.view404 = new Hippodrome.Action(
   -> {}
 )
 
+Madeleines.Actions.viewHowTo = new Hippodrome.Action(
+  'view How To',
+  -> {}
+)
+
 Madeleines.Actions.apiError = new Hippodrome.Action(
   'api Error',
   (response, status) -> {response: response, status: status}

@@ -11,6 +11,9 @@ Router = new Hippodrome.Store
   },{
     action: Madeleines.Actions.view404
     callback: 'view404'
+  },{
+    action: Madeleines.Actions.viewHowTo
+    callback: 'viewHowTo'
   }]
 
   viewIndex: (payload) ->
@@ -21,6 +24,9 @@ Router = new Hippodrome.Store
     @trigger()
   view404: (payload) ->
     @_route = '404'
+    @trigger()
+  viewHowTo: (payload) ->
+    @_route = 'howto'
     @trigger()
 
   public:

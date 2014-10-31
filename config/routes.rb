@@ -1,6 +1,7 @@
 Madeleines::Application.routes.draw do
   get '/' => 'home#index'
   get '/bake' => 'home#index'
+  get '/howto' => 'home#index'
 
   namespace :api do
     namespace :v1 do

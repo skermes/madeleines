@@ -20,6 +20,8 @@ ChangeUrl = new Hippodrome.DeferredTask
         Madeleines.Actions.viewIndex()
       else if paths[0] == 'bake'
         Madeleines.Actions.viewBaker()
+      else if paths[0] == 'howto'
+        Madeleines.Actions.viewHowTo()
       else
         Madeleines.Actions.view404()
 
