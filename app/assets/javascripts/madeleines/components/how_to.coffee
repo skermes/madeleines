@@ -11,7 +11,7 @@ HowTo = React.createClass
         there.  You only get to see one link a day, randomly chosen from
         everything you\'ve saved up until then.  When you log in to Madeleines,
         that\'s all you get:')
-      img({className: 'screenshot', src: 'http://placehold.it/540x960'})
+      img({className: 'screenshot', src: '/assets/todays-remembrance-phone.png'})
       div({className: 'paragraph'}, 'If you don\'t like your link for the day,
         you can drop it with the button at the bottom.  You won\'t get a new
         link, but you\'ll never see that one again.')
