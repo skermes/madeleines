@@ -47,4 +47,12 @@ class LinkedItem
     item.preview = document.lede
     return item
   end
+
+  def self.howto_item
+    item = LinkedItem.new(Rails.application.routes.url_helpers.howto_url)
+    item.title = 'What is this Madeleines thing and how do I used it?'
+    item.preview = 'You\'ve just signed up for Madeleines.  Here\'s a primer on
+                    what it does and how make it work for you.'
+    return item
+  end
 end
