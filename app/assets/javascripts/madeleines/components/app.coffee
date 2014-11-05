@@ -22,7 +22,9 @@ App = React.createClass
      HowTo} = Madeleines.Components
 
     includeTopBar = true
-    if @state.userId == undefined
+    if @state.page == 'howto'
+      contents = HowTo()
+    else if @state.userId == undefined
       contents = Splash()
       includeTopBar = false
     else if @state.page == 'none'
@@ -33,8 +35,6 @@ App = React.createClass
       contents = Remembrance()
     else if @state.page == 'bake'
       contents = Baker()
-    else if @state.page == 'howto'
-      contents = HowTo()
     else if @state.page == '404'
       contents = FourOhFour()
 
