@@ -1,4 +1,6 @@
-class Api::V1::RemembrancesController < ApplicationController
+class Api::V1::RemembrancesController < Api::V1::ApiController
+  before_filter :require_login
+
   def bite
     render :json => Remembrance.bite_for(current_user)
   end

@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < Api::V1::ApiController
   def create
     candidate = User.find_by_email_insensitive(params[:email])
     if candidate
