@@ -9,14 +9,14 @@ class Api::V1::SessionsController < Api::V1::ApiController
     end
 
     if user and user.valid?
-      render :json => {:user => user.id}
+      render_json({:user => user.id})
     else
-      render :json => {:error => 'Unauthorized'}, :status => 401
+      not_authenticated
     end
   end
 
   def destroy
     logout
-    render :json => {}
+    render_json({})
   end
 end

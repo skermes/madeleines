@@ -2,19 +2,19 @@ class Api::V1::RemembrancesController < Api::V1::ApiController
   before_filter :require_login
 
   def bite
-    render :json => Remembrance.bite_for(current_user)
+    render_json Remembrance.bite_for(current_user)
   end
 
   def drop
     todays = Remembrance.bite_for(current_user)
     todays.drop
-    render :json => todays
+    render_json todays
   end
 
   def pick_up
     todays = Remembrance.bite_for(current_user)
     todays.pick_up
-    render :json => todays
+    render_json todays
   end
 
   def bake
@@ -22,9 +22,9 @@ class Api::V1::RemembrancesController < Api::V1::ApiController
 
     if item.valid?
       remembrance = Remembrance.from_linked_item(item, current_user)
-      render :json => {'baked' => true}
+      render_json({:baked => true})
     else
-      render :json => {'baked' => false, 'reasons' => item.errors}
+      render_json({:baked => false, :reasons => item.errors})
     end
   end
 end
