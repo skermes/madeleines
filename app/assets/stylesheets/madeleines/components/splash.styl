@@ -1,8 +1,6 @@
 @import "global"
 
 .splash
-  background-image url('/images/splash-bg-phone.png')
-  background-size cover
 
   float-on-top()
     position absolute
@@ -42,8 +40,9 @@
       background-color error-color
 
   .hero
-    margin-top 6rem
-    padding 0 0.5rem
+    background-image url('/images/splash-bg-phone.png')
+    background-size cover
+    padding 6rem 0.5rem 2rem 0.5rem
 
     hero-line()
       content-font()
