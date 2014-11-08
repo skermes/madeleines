@@ -17,12 +17,13 @@ Splash = React.createClass
     div {className: 'splash'},
       LogInForm()
       div({className: 'hero'},
-        HeroLine({}, 'Bookmarking')
-        HeroLine({}, 'lets you')
-        HeroLine({}, 'forget')
-        div({className: 'hero-line-pop'}, 'M a d e l e i n e s')
-        HeroLine({}, 'helps you')
-        HeroLine({}, 'remember'))
+        div({className: 'tagline-container'},
+          HeroLine({}, 'Bookmarking')
+          HeroLine({}, 'lets you')
+          HeroLine({}, 'forget')
+          div({className: 'hero-line-pop'}, 'M a d e l e i n e s')
+          HeroLine({}, 'helps you')
+          HeroLine({}, 'remember')))
       div({className: 'splash-section'}, 'If you\'re anything like me, you\'ve
         squirreled away piles and piles of digital errata.  Whether it\'s a
         bookmarking service or old blog posts or whatever, you saved it because

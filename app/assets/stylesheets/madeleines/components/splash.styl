@@ -44,6 +44,10 @@
     background-size cover
     padding 6rem 0.5rem 2rem 0.5rem
 
+    .tagline-container
+      width 19rem
+      margin auto
+
     hero-line()
       content-font()
       text-align justify
@@ -81,3 +85,19 @@
 
     &:first-line
       font-weight bold
+
+  @media tablet-media-query
+    .hero
+      background-image url('/images/splash-bg-tablet.png')
+
+      .tagline-container
+        margin-right 2rem
+        width 24rem
+
+      .hero-line-normal
+        font-size 1.75rem
+        width 20rem
+
+      .hero-line-pop
+        font-size 2.25rem
+        width 24rem
