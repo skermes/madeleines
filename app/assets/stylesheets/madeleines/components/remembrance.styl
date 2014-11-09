@@ -38,6 +38,34 @@
       display block
       width 100%
 
+.no-remembrances
+  content-font()
+  font-size 2rem
+  margin 2rem 0.5rem
+
+@media tablet-media-query
+  .remembrance
+    max-width content-width
+    margin auto
+
+    .remembrance-preview
+      flex-grow 0
+      min-height 12rem
+
+    .drop-remembrance
+      text-align right
+
+      .drop-message
+        display block
+
+      .drop-remembrance-button
+        display inline-block
+        width auto
+
+  .no-remembrances
+    max-width content-width
+    margin auto
+
 @keyframes slide
   0%
     left -15rem
@@ -76,9 +104,3 @@
     left -(loader-size * 1.5)
     background radial-gradient(contrast-color, transparent)
     animation(slide 1.5s ease-in-out 1s infinite alternate)
-
-.no-remembrances
-  content-font()
-  font-size 2rem
-  margin 2rem 0.5rem
-

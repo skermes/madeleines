@@ -6,14 +6,21 @@
   ui-font()
   font-size 1.75rem
 
-  position relative
+  .top-bar-content
+    position relative
 
-  .title
-    display inline-block
-    margin 0.5rem
+    .title
+      display inline-block
+      margin 0.5rem
 
-  .change-page-button
-    position absolute
-    top 0
-    right 0
-    bottom 0
+    .change-page-button
+      position absolute
+      top 0
+      right 0
+      bottom 0
+
+@media tablet-media-query
+  .top-bar
+    .top-bar-content
+      max-width content-width
+      margin auto

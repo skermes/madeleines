@@ -1,5 +1,5 @@
 {pickUpRemembrance, dropRemembrance} = Madeleines.Actions
-{div} = React.DOM
+{div, span} = React.DOM
 
 DropRemembrance = React.createClass
   displayName: 'Drop Remembrance'
@@ -19,7 +19,7 @@ DropRemembrance = React.createClass
     action = if @props.remembrance.is_dropped then pickUpRemembrance else dropRemembrance
 
     div {className: 'drop-remembrance'},
-      message,
+      span({className: 'drop-message'}, message),
       Button {
         className: 'drop-remembrance-button',
         action: action,

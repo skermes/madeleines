@@ -14,7 +14,8 @@ TopBar = React.createClass
       text = 'Bake'
 
     div {className: 'top-bar'},
-      span({className: 'title'}, 'Madeleines'),
-      Button({className: 'change-page-button', action: action}, text)
+      div {className: 'top-bar-content'},
+        span({className: 'title'}, 'Madeleines'),
+        Button({className: 'change-page-button', action: action}, text)
 
 Madeleines.Components.TopBar = TopBar
