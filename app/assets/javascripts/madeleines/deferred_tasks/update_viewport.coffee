@@ -2,7 +2,7 @@ UpdateViewport = new Hippodrome.DeferredTask
   displayName: 'Update Viewport'
   action: Madeleines.Actions.startApp
   task: (payload) ->
-    window.resize = @updateViewportInfo
+    window.onresize = @updateViewportInfo
     @updateViewportInfo()
 
   updateViewportInfo: ->
