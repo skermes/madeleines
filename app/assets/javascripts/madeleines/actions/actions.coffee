@@ -52,3 +52,11 @@ Madeleines.Actions.apiError = new Hippodrome.Action(
   'api Error',
   (response, status) -> {response: response, status: status}
 )
+
+Madeleines.Actions.viewportInfo = new Hippodrome.Action(
+  'viewport Info'
+  (width, height, density) ->
+    width: width
+    height: height
+    density: density
+)
