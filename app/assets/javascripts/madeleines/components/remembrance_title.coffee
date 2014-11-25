@@ -8,7 +8,12 @@ RemembranceTitle = React.createClass
     else
       title = @props.remembrance.url
 
+    if /:\/\//g.test(@props.remembrance.url)
+      url = @props.remembrance.url
+    else
+      url = "http://#{@props.remembrance.url}"
+
     div {className: 'remembrance-title'},
-      a {href: @props.remembrance.url}, title
+      a {href: url}, title
 
 Madeleines.Components.RemembranceTitle = RemembranceTitle
