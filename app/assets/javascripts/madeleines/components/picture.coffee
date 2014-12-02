@@ -16,7 +16,7 @@ Picture = React.createClass
     src = "#{path}-#{@state.device}.#{extension}"
 
     props = _.assign({}, @props)
-    props = _.assign(props, {src: src})
+    props.src = Madeleines.Images[src]
 
     img(props)
 
