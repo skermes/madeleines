@@ -7,7 +7,7 @@ Picture = React.createClass
     Viewport.listen('updateViewport')
   ]
   getInitialState: ->
-    device: Viewport.device
+    device: Viewport.device()
   updateViewport: ->
     @setState(device: Viewport.device())
 
