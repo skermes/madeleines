@@ -3,10 +3,6 @@
 
 Madeleines.Actions = {}
 
-Madeleines.Actions.startApp = Hippodrome.createAction
-  displayName: 'start App'
-  build: (userId) -> {userId: userId}
-
 Madeleines.Actions.login = Hippodrome.createAction
   displayName: 'log In'
   build: (email, password) -> {email: email, password: password}

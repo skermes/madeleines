@@ -11,4 +11,5 @@ window.Madeleines = {}
 
 Madeleines.start = (root, userId) ->
   React.renderComponent(Madeleines.Components.App(), root)
-  Madeleines.Actions.startApp(userId)
+  Hippodrome.start
+    userId: userId
