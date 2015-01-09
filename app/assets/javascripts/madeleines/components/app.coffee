@@ -4,18 +4,9 @@
 App = React.createClass
   displayName: 'App'
   mixins: [
-    Router.listen('onPageChange')
-    CurrentUser.listen('onUserChange')
+    Router.listen('page', Router.appPage)
+    CurrentUser.listen('userId', CurrentUser.id)
   ]
-  getInitialState: ->
-    return {
-      page: Router.appPage()
-      userId: CurrentUser.id()
-    }
-  onPageChange: ->
-    @setState(page: Router.appPage())
-  onUserChange: ->
-    @setState(userId: CurrentUser.id())
 
   render: ->
     {TopBar, Remembrance, Baker, FourOhFour, Splash,

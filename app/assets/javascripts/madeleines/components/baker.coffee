@@ -5,7 +5,7 @@
 Baker = React.createClass
   displayName: 'Baker'
   mixins: [
-    BakingStatus.listen('onBakingStatus')
+    BakingStatus.listenWith('onBakingStatus')
   ]
   getInitialState: ->
     return {
@@ -14,10 +14,10 @@ Baker = React.createClass
     }
   onBakingStatus: ->
     text = if BakingStatus.isSuccessful() then '' else text
-    @setState(
+    return {
       text: text
       pending: BakingStatus.isPending()
-    )
+    }
 
   componentDidMount: ->
     this.refs.input.getDOMNode().focus()

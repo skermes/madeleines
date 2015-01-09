@@ -4,17 +4,14 @@
 LogInForm = React.createClass
   displayName: 'Log In Form'
   mixins: [
-    LoginFailed.listen('onLogin')
+    LoginFailed.listen('loginFailed', LoginFailed.hasFailed)
   ]
   getInitialState: ->
     return {
       open: false
       email: ''
       password: ''
-      loginFailed: LoginFailed.hasFailed()
     }
-  onLogin: ->
-    @setState(loginFailed: LoginFailed.hasFailed())
 
   componentDidUpdate: (prevProps, prevState) ->
     if @state.open and not prevState.open

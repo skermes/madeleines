@@ -4,12 +4,8 @@
 Picture = React.createClass
   displayName: 'Picture'
   mixins: [
-    Viewport.listen('updateViewport')
+    Viewport.listen('device', Viewport.device)
   ]
-  getInitialState: ->
-    device: Viewport.device()
-  updateViewport: ->
-    @setState(device: Viewport.device())
 
   render: ->
     [path, extension] = @props.src.split('.')

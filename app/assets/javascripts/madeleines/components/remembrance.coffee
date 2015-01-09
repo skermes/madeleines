@@ -4,22 +4,15 @@
 Remembrance = React.createClass
   displayName: 'Remembrance'
   mixins: [
-    TodaysRemembrance.listen('onRemembranceChange')
-    DropPickUpStatus.listen('onDropPickupChange')
+    TodaysRemembrance.listenWith('onRemembranceChange')
+    DropPickUpStatus.listen('dropPickupPending', DropPickUpStatus.isPending)
   ]
-  getInitialState: ->
+
+  onRemembranceChange: ->
     return {
       remembrance: TodaysRemembrance.remembrance()
       remembrancePending: TodaysRemembrance.pending()
-      dropPickupPending: DropPickUpStatus.isPending()
     }
-  onRemembranceChange: ->
-    @setState({
-      remembrance: TodaysRemembrance.remembrance()
-      remembrancePending: TodaysRemembrance.pending()
-    })
-  onDropPickupChange: ->
-    @setState(dropPickupPending: DropPickUpStatus.isPending())
 
   render: ->
     {LoadingRemembrance
