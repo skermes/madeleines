@@ -1,7 +1,6 @@
-UpdateViewport = new Hippodrome.DeferredTask
+UpdateViewport = Hippodrome.createDeferredTask
   displayName: 'Update Viewport'
-  action: Madeleines.Actions.startApp
-  task: (payload) ->
+  initialize: (options) ->
     window.onresize = @updateViewportInfo
     @updateViewportInfo()
 

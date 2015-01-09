@@ -1,6 +1,6 @@
 {bake} = Madeleines.Api.Remembrances
 
-BakeRemembrance = new Hippodrome.DeferredTask
+BakeRemembrance = Hippodrome.createDeferredTask
   displayName: 'Bake Remembrance'
   action: Madeleines.Actions.bake
   task: (payload) ->

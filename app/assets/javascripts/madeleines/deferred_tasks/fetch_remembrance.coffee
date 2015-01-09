@@ -1,16 +1,12 @@
 {updateRemembrance, apiError} = Madeleines.Actions
 
-FetchRemembrance = new Hippodrome.DeferredTask
+FetchRemembrance = Hippodrome.createDeferredTask
   displayName: 'Fetch Remembrance'
-  initialize: ->
+  initialize: (options) ->
     @_lastUserFetched = undefined
-  dispatches: [{
-    action: Madeleines.Actions.startApp
-    callback: 'fetchIfUserChanged'
-  },{
-    action: Madeleines.Actions.updateUser
-    callback: 'fetchIfUserChanged'
-  }]
+    @fetchIfUserChanged(options)
+
+    @dispatch(Madeleines.Actions.updateUser).to(@fetchIfUserChanged)
 
   fetchIfUserChanged: (payload) ->
     if payload.userId and  @_lastUserFetched != payload.userId

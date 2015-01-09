@@ -1,6 +1,6 @@
 {updateRemembrance, apiError} = Madeleines.Actions
 
-PickUpRemembrance = new Hippodrome.DeferredTask
+PickUpRemembrance = Hippodrome.createDeferredTask
   displayName: 'Pick Up Remembrance'
   action: Madeleines.Actions.pickUpRemembrance
   task: (payload) ->

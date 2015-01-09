@@ -1,14 +1,10 @@
 {updateUser, apiError, loginFailed} = Madeleines.Actions
 
-LogInOut = new Hippodrome.DeferredTask
+LogInOut = Hippodrome.createDeferredTask
   displayName: 'Log In Out'
-  dispatches: [{
-    action: Madeleines.Actions.login
-    callback: 'login'
-  },{
-    action: Madeleines.Actions.logout
-    callback: 'logout'
-  }]
+  initialize: (options) ->
+    @dispatch(Madeleines.Actions.login).to(@login)
+    @dispatch(Madeleines.Actions.logout).to(@logout)
 
   login: (payload) ->
     data = {email: payload.email, password: payload.password}
@@ -23,3 +19,5 @@ LogInOut = new Hippodrome.DeferredTask
   logout: (payload) ->
     success = (response) -> updateUser(undefined)
     Madeleines.Api.LogInOut.logout(undefined, success, apiError)
+
+Madeleines.Tasks.LogInOut = LogInOut

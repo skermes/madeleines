@@ -1,15 +1,10 @@
-ChangeUrl = new Hippodrome.DeferredTask
+ChangeUrl = Hippodrome.createDeferredTask
   displayName: 'Change Url'
-  dispatches: [{
-    action: Madeleines.Actions.startApp
-    callback: 'setupPopstate'
-  },{
-    action: Madeleines.Actions.viewIndex
-    callback: 'viewIndex'
-  },{
-    action: Madeleines.Actions.viewBaker
-    callback: 'viewBaker'
-  }]
+  initialize: (options) ->
+    @setupPopstate()
+
+    @dispatch(Madeleines.Actions.viewIndex).to(@viewIndex)
+    @dispatch(Madeleines.Actions.viewBaker).to(@viewBaker)
 
   # Note that window.history.pushState doesn't trigger a window.onpopstate
   # event, so we won't get into a infinite loop here.
