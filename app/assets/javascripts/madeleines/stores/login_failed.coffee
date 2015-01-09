@@ -1,14 +1,10 @@
-LoginFailed = new Hippodrome.Store
+LoginFailed = Hippodrome.createStore
   displayName: 'Login Failed'
   inititialized: ->
     @_failed = false
-  dispatches: [{
-    action: Madeleines.Actions.loginFailed
-    callback: 'failed'
-  },{
-    action: Madeleines.Actions.updateUser
-    callback: 'succeeded'
-  }]
+
+    @dispatch(Madeleines.Actions.loginFailed).to(@failed)
+    @dispatch(Madeleines.Actions.updateUser).to(@succeeded)
 
   failed: ->
     @_failed = true

@@ -1,14 +1,10 @@
-CurrentUser = new Hippodrome.Store
+CurrentUser = Hippodrome.createStore
   displayName: 'Current User'
-  initialize: ->
+  initialize: (options) ->
     @_id = undefined
-  dispatches: [{
-    action: Madeleines.Actions.startApp
-    callback: 'setUserId'
-  },{
-    action: Madeleines.Actions.updateUser
-    callback: 'setUserId'
-  }]
+    @setUserId(options)
+
+    @dispatch(Madeleines.Actions.updateUser).to(@setUserId);
 
   setUserId: (payload) ->
     @_id = payload.userId

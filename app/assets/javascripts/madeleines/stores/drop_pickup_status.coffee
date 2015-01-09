@@ -1,17 +1,10 @@
-DropPickUpStatus = new Hippodrome.Store
+DropPickUpStatus = Hippodrome.createStore
   initialize: ->
     @_status = undefined
 
-  dispatches: [{
-    action: Madeleines.Actions.dropRemembrance
-    callback: 'pending'
-  }, {
-    action: Madeleines.Actions.pickUpRemembrance
-    callback: 'pending'
-  }, {
-    action: Madeleines.Actions.updateRemembrance
-    callback: 'completed'
-  }]
+    @dispatch(Madeleines.Actions.dropRemembrance).to(@pending)
+    @dispatch(Madeleines.Actions.pickUpRemembrance).to(@pending)
+    @dispatch(Madeleines.Actions.updateRemembrance).to(@completed)
 
   pending: (payload) ->
     @_status = 'pending'

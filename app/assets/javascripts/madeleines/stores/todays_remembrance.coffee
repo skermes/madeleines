@@ -1,12 +1,9 @@
-TodaysRemembrance = new Hippodrome.Store
+TodaysRemembrance = Hippodrome.createStore
   initialize: ->
     @_remembrance = undefined
     @_pending = true
 
-  dispatches: [{
-    action: Madeleines.Actions.updateRemembrance
-    callback: 'updateRemembrance'
-  }]
+    @dispatch(Madeleines.Actions.updateRemembrance).to(@updateRemembrance)
 
   updateRemembrance: (payload) ->
     @_remembrance = payload.remembrance

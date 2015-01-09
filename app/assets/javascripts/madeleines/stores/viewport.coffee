@@ -1,13 +1,11 @@
-Viewport = new Hippodrome.Store
+Viewport = Hippodrome.createStore
   displayName: 'Viewport'
   initialize: ->
     @_width = 0
     @_height = 0
     @_density = 0
-  dispatches: [{
-    action: Madeleines.Actions.viewportInfo
-    callback: 'changeViewport'
-  }]
+
+    @dispatch(Madeleines.Actions.viewportInfo).to(@changeViewport)
 
   changeViewport: (payload) ->
     @_width = payload.width

@@ -1,20 +1,11 @@
-Router = new Hippodrome.Store
+Router = Hippodrome.createStore
   initialize: ->
     @_route = 'none'
 
-  dispatches: [{
-    action: Madeleines.Actions.viewIndex
-    callback: 'viewIndex'
-  },{
-    action: Madeleines.Actions.viewBaker
-    callback: 'viewBaker'
-  },{
-    action: Madeleines.Actions.view404
-    callback: 'view404'
-  },{
-    action: Madeleines.Actions.viewHowTo
-    callback: 'viewHowTo'
-  }]
+    @dispatch(Madeleines.Actions.viewIndex).to(@viewIndex)
+    @dispatch(Madeleines.Actions.viewBaker).to(@viewBaker)
+    @dispatch(Madeleines.Actions.view404).to(@view404)
+    @dispatch(Madeleines.Actions.viewHowTo).to(@viewHowTo)
 
   viewIndex: (payload) ->
     @_route = 'index'

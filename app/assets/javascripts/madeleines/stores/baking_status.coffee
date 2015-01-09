@@ -1,18 +1,11 @@
-BakingStatus = new Hippodrome.Store
+BakingStatus = Hippodrome.createStore
   initialize: ->
     @_status = 'none'
     @_failureReasons = undefined
 
-  dispatches: [{
-    action: Madeleines.Actions.bake
-    callback: 'pending'
-  }, {
-    action: Madeleines.Actions.bakingSuccessful
-    callback: 'successful'
-  }, {
-    action: Madeleines.Actions.bakingFailed
-    callback: 'failure'
-  }]
+    @dispatch(Madeleines.Actions.bake).to(@pending)
+    @dispatch(Madeleines.Actions.bakingSuccessful).to(@successful)
+    @dispatch(Madeleines.Actions.bakingFailed).to(@failure)
 
   pending: (payload) ->
     @_status = 'pending'
