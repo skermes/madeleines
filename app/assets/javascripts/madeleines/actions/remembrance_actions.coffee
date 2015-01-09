@@ -1,14 +1,11 @@
-Madeleines.Actions.updateRemembrance = new Hippodrome.Action(
-  'update Remembrance',
-  (remembrance) -> {remembrance: remembrance}
-)
+Madeleines.Actions.updateRemembrance = Hippodrome.createAction
+  displayName: 'update Remembrance'
+  build: (remembrance) -> {remembrance: remembrance}
 
-Madeleines.Actions.dropRemembrance = new Hippodrome.Action(
-  'drop Remembrance',
-  () -> {}
-)
+Madeleines.Actions.dropRemembrance = Hippodrome.createAction
+  displayName: 'drop Remembrance'
+  build: () -> {}
 
-Madeleines.Actions.pickUpRemembrance = new Hippodrome.Action(
-  'pick Up Remembrance',
-  () -> {}
-)
+Madeleines.Actions.pickUpRemembrance = Hippodrome.createAction
+  displayName: 'pick Up Remembrance'
+  build: () -> {}
