@@ -1,11 +1,21 @@
 {Viewport} = Madeleines.Stores
 {img} = React.DOM
 
+# Listen to store manually to work around Hippodrome bug.
+
 Picture = React.createClass
   displayName: 'Picture'
-  mixins: [
-    Viewport.listen('device', Viewport.device)
-  ]
+
+  getInitialState: ->
+    return {
+      device: Viewport.device()
+    }
+  componentDidMount: ->
+    Viewport.register(@viewportChange)
+  componentWillUnmount: ->
+    Viewport.unregister(@viewportChange)
+  viewportChange: ->
+    @setState(device: Viewport.device())
 
   render: ->
     [path, extension] = @props.src.split('.')
