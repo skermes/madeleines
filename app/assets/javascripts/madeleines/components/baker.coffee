@@ -7,11 +7,6 @@ Baker = React.createClass
   mixins: [
     BakingStatus.listenWith('onBakingStatus')
   ]
-  getInitialState: ->
-    return {
-      text: ''
-      pending: BakingStatus.isPending()
-    }
   onBakingStatus: ->
     text = if BakingStatus.isSuccessful() then '' else text
     return {
