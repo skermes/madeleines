@@ -6,6 +6,7 @@ BakingStatus = Hippodrome.createStore
     @dispatch(Madeleines.Actions.bake).to(@pending)
     @dispatch(Madeleines.Actions.bakingSuccessful).to(@successful)
     @dispatch(Madeleines.Actions.bakingFailed).to(@failure)
+    @dispatch(Madeleines.Actions.viewBaker).to(@none)
 
   pending: (payload) ->
     @_status = 'pending'
@@ -16,6 +17,9 @@ BakingStatus = Hippodrome.createStore
   failure: (payload) ->
     @_status = 'failure'
     @_failureReasons = payload.reasons
+    @trigger()
+  none: (payload) ->
+    @_status = 'none'
     @trigger()
 
   public:
