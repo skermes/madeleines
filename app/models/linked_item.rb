@@ -50,7 +50,7 @@ class LinkedItem
 
   def self.howto_item
     item = LinkedItem.new(Rails.application.routes.url_helpers.howto_url)
-    item.title = 'What is this Madeleines thing and how do I used it?'
+    item.title = 'What is this Madeleines thing and how do I use it?'
     item.preview = 'You\'ve just signed up for Madeleines.  Here\'s a primer on
                     what it does and how make it work for you.'
     return item
