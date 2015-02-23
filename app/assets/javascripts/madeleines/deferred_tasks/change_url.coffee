@@ -6,6 +6,7 @@ ChangeUrl = Hippodrome.createDeferredTask
     @dispatch(Madeleines.Actions.viewIndex).to(@viewIndex)
     @dispatch(Madeleines.Actions.viewBaker).to(@viewBaker)
     @dispatch(Madeleines.Actions.viewHowTo).to(@viewHowTo)
+    @dispatch(Madeleines.Actions.viewSettings).to(@viewSettings)
 
   # Note that window.history.pushState doesn't trigger a window.onpopstate
   # event, so we won't get into a infinite loop here.
@@ -18,6 +19,8 @@ ChangeUrl = Hippodrome.createDeferredTask
         Madeleines.Actions.viewBaker()
       else if paths[0] == 'howto'
         Madeleines.Actions.viewHowTo()
+      else if paths[0] == 'settings'
+        Madeleines.Actions.viewSettings()
       else
         Madeleines.Actions.view404()
 
@@ -30,5 +33,7 @@ ChangeUrl = Hippodrome.createDeferredTask
     window.history.pushState(null, '', '/bake')
   viewHowTo: (payload) ->
     window.history.pushState(null, '', '/howto')
+  viewSettings: (payload) ->
+    window.history.pushState(null, '', '/settings')
 
 Madeleines.Tasks.ChangeUrl = ChangeUrl

@@ -6,6 +6,7 @@ Router = Hippodrome.createStore
     @dispatch(Madeleines.Actions.viewBaker).to(@viewBaker)
     @dispatch(Madeleines.Actions.view404).to(@view404)
     @dispatch(Madeleines.Actions.viewHowTo).to(@viewHowTo)
+    @dispatch(Madeleines.Actions.viewSettings).to(@viewSettings)
 
   viewIndex: (payload) ->
     @_route = 'index'
@@ -18,6 +19,9 @@ Router = Hippodrome.createStore
     @trigger()
   viewHowTo: (payload) ->
     @_route = 'howto'
+    @trigger()
+  viewSettings: (payload) ->
+    @_route = 'settings'
     @trigger()
 
   public:

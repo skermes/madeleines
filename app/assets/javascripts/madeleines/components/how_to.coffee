@@ -1,4 +1,4 @@
-{div, img} = React.DOM
+{div} = React.DOM
 
 HowTo = React.createClass
   displayName: 'How To'

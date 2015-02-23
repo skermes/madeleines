@@ -10,7 +10,7 @@ App = React.createClass
 
   render: ->
     {TopBar, Remembrance, Baker, FourOhFour, Splash,
-     HowTo} = Madeleines.Components
+     HowTo, Settings} = Madeleines.Components
 
     includeTopBar = true
     if @state.page == 'howto'
@@ -26,6 +26,8 @@ App = React.createClass
       contents = Remembrance()
     else if @state.page == 'bake'
       contents = Baker()
+    else if @state.page == 'settings'
+      contents = Settings()
     else if @state.page == '404'
       contents = FourOhFour()
 

@@ -1,4 +1,4 @@
-{viewBaker, viewIndex, viewHowTo} = Madeleines.Actions
+{viewBaker, viewIndex, viewHowTo, viewSettings} = Madeleines.Actions
 {div, span} = React.DOM
 
 TopBarButton = React.createClass
@@ -47,6 +47,7 @@ TopBar = React.createClass
         TopBarButton({
           currentPage: @props.currentPage
           page: 'settings'
+          action: viewSettings
           side: 'right'
         }, Icon({name: 'gear'}))
 
