@@ -15,6 +15,8 @@ TopBarButton = React.createClass
 TopBar = React.createClass
   displayName: 'Top Bar'
   render: ->
+    {Icon} = Madeleines.Components
+
     if @props.currentPage in ['none', 'bake', '404']
       action = viewIndex
       text = 'Today\'s'
@@ -41,11 +43,11 @@ TopBar = React.createClass
           page: 'howto'
           action: viewHowTo
           side: 'right'
-        }, '?')
+        }, Icon({name: 'question mark'}))
         TopBarButton({
           currentPage: @props.currentPage
           page: 'settings'
           side: 'right'
-        }, 'S')
+        }, Icon({name: 'gear'}))
 
 Madeleines.Components.TopBar = TopBar

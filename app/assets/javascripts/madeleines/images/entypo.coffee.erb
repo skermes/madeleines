@@ -1,0 +1,7 @@
+Entypo = {
+  <% Rails.root.join('app', 'assets', 'entypo').each_child do |f| %>
+  '<%= f.basename.to_s[0, f.basename.to_s.length - 4] %>': '<%= f.read %>'
+  <% end %>
+}
+
+Madeleines.Entypo = Entypo

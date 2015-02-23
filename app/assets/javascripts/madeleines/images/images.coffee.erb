@@ -1,3 +1,5 @@
+#= require_tree .
+
 Images = {
   <% Rails.root.join('app', 'assets', 'images').each_child do |f| %>
   '<%= f.basename %>': '<%= image_path(f.basename) %>'
