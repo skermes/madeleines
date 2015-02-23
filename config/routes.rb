@@ -12,6 +12,9 @@ Madeleines::Application.routes.draw do
       post 'drop' => 'remembrances#drop'
       post 'pick-up' => 'remembrances#pick_up'
       post 'bake' => 'remembrances#bake'
+
+      get 'settings' => 'settings#index'
+      put 'settings' => 'settings#update'
     end
   end
 

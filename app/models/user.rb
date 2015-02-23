@@ -23,4 +23,12 @@ class User < ActiveRecord::Base
 
     User.where('lower(email) = ?', email.downcase).first
   end
+
+  DEFAULT_SETTINGS = {
+    'notifications' => false
+  }
+
+  def settings_with_defaults
+    DEFAULT_SETTINGS.merge(self.settings)
+  end
 end
