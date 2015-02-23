@@ -1,0 +1,26 @@
+@import "global"
+
+.settings
+  content-font()
+  padding 0.5rem
+
+  .section-heading
+    ui-font()
+    margin-top 2rem
+    margin-bottom 1rem
+    font-size 1.5rem
+    color contrast-color
+    font-weight bold
+    border-bottom 1px solid contrast-color
+
+  label, input
+    display block
+
+  label,
+  input[type="submit"]
+    margin-top 1rem
+
+@media tablet-media-query
+  .settings
+    main-content()
+    padding 0

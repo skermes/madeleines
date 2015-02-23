@@ -2,7 +2,15 @@
 
 Settings = React.createClass
   displayName: 'Settings'
+
+  getInitialState: ->
+    return {
+      notifications: false
+    }
+
   render: ->
+    {RadioButton} = Madeleines.Components
+
     div {className: 'settings'},
       div({className: 'section-heading'}, 'Password')
       label({htmlFor: 'old-password'}, 'Old Password')
@@ -12,12 +20,24 @@ Settings = React.createClass
       input({type: 'submit', className: 'button', value: 'Change Password', disabled: true})
 
       div({className: 'section-heading'}, 'Notifications')
-      input({type: 'radio', id: 'notifications-yes'})
-      label({htmlFor: 'notifications-yes'}, 'Yes, I want to get daily notifications')
-      input({type: 'radio', id: 'notifications-no'})
-      label({htmlFor: 'notifications-no'}, 'No, don\'t send me any notifications')
+      RadioButton({
+        name: 'notifications'
+        value: 'yes'
+        onChange: @notificationsYes
+        checked: @state.notifications
+      }, 'Yes, I want to get daily notifications')
+      RadioButton({
+        name: 'notifications'
+        value: 'no'
+        onChange: @notificationsNo
+        checked: !@state.notifications
+      }, 'No, don\'t send me any notifications')
       input({type: 'submit', className: 'button', value: 'Save', disabled: true})
 
+  notificationsYes: ->
+    @setState(notifications: true)
+  notificationsNo: ->
+    @setState(notifications: false)
 
 
 

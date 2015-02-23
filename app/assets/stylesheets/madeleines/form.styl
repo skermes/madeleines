@@ -1,0 +1,42 @@
+@import "global"
+
+button.button,
+input[type="submit"].button
+  ui-font()
+  color bg-color
+  font-size 1.25rem
+  background-color button-color
+  padding 0.5rem 2rem
+
+  &[disabled]
+    background-color rgba(button-color, 60%)
+
+input
+  outline none
+
+input[type="text"],
+input[type="email"],
+input[type="password"]
+  content-font()
+  box-sizing border-box
+  border 1px solid text-color
+  font-size 1rem
+  padding 0.5rem
+
+.radio-input
+  position relative
+  padding-left 1.25rem
+
+  input
+    display none
+
+  .check
+    fill success-color
+    position absolute
+    left 0
+    top 0
+
+    svg
+      width 1.25rem
+      height 1.25rem
+

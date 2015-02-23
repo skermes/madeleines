@@ -1,20 +1,22 @@
 {span} = React.DOM
 
 aliases = {
-  'cog': 'cog'
   'gear': 'cog'
-  'help': 'help'
   'question mark': 'help'
 }
 
 Icon = React.createClass
   displayName: 'Icon'
   render: ->
-    name = aliases[@props.name]
+    name = aliases[@props.name] || @props.name
     svg = Madeleines.Entypo[name]
 
+    className = 'icon'
+    if @props.className
+      className += ' ' + @props.className
+
     span({
-      className: "icon"
+      className: className
       dangerouslySetInnerHTML: {__html: svg}
     })
 
