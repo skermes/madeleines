@@ -1,0 +1,23 @@
+@import "global"
+
+@keyframes message-slide-down
+  0%
+    top -2.5rem
+  100%
+    top 0
+
+status-message()
+  position absolute
+  left 0
+  right 0
+  text-align center
+  color bg-color
+  animation message-slide-down 0.5s
+
+.status-message-successful
+  status-message()
+  background-color success-color
+
+.status-message-failed
+  status-message()
+  background-color error-color

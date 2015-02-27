@@ -1,32 +1,26 @@
 {bake} = Madeleines.Actions
-{BakingStatus} = Madeleines.Stores
+{ApiStatus} = Madeleines.Stores
 {div, span, form, input} = React.DOM
 
 Baker = React.createClass
   displayName: 'Baker'
   mixins: [
-    BakingStatus.listenWith('onBakingStatus')
+    ApiStatus.listen('pending', ApiStatus.isPending)
   ]
-  onBakingStatus: ->
-    text = if BakingStatus.isSuccessful() then '' else text
-    return {
-      text: text
-      pending: BakingStatus.isPending()
-    }
 
   componentDidMount: ->
     this.refs.input.getDOMNode().focus()
   render: ->
     {Button, BakingStatusMessage} = Madeleines.Components
 
-    if BakingStatus.isDone()
+    if ApiStatus.isDone()
       message = BakingStatusMessage({
-        successful: BakingStatus.isSuccessful()
-        reasons: BakingStatus.failureReasons()
+        successful: ApiStatus.isSuccessful()
+        reasons: ApiStatus.failureReasons()
       })
 
     btnText = if @state.pending then 'Baking...' else 'Bake'
-    disable = @state.pending or (not @state.text) or @state.text.trim() == ''
+    disable = @state.pending
 
     div {className: 'baker'},
       message

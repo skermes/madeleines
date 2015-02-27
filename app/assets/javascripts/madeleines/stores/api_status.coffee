@@ -1,12 +1,14 @@
-BakingStatus = Hippodrome.createStore
+ApiStatus = Hippodrome.createStore
   initialize: ->
     @_status = 'none'
     @_failureReasons = undefined
 
-    @dispatch(Madeleines.Actions.bake).to(@pending)
-    @dispatch(Madeleines.Actions.bakingSuccessful).to(@successful)
-    @dispatch(Madeleines.Actions.bakingFailed).to(@failure)
+    @dispatch(Madeleines.Actions.apiSent).to(@pending)
+    @dispatch(Madeleines.Actions.apiSuccessful).to(@successful)
+    @dispatch(Madeleines.Actions.apiFailed).to(@failure)
     @dispatch(Madeleines.Actions.viewBaker).to(@none)
+    @dispatch(Madeleines.Actions.viewSettings).to(@none)
+    @dispatch(Madeleines.Actions.login).to(@none)
 
   pending: (payload) ->
     @_status = 'pending'
@@ -32,4 +34,4 @@ BakingStatus = Hippodrome.createStore
     failureReasons: ->
       @_failureReasons
 
-Madeleines.Stores.BakingStatus = BakingStatus
+Madeleines.Stores.ApiStatus = ApiStatus

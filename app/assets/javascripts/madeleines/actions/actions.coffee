@@ -39,10 +39,6 @@ Madeleines.Actions.viewSettings = Hippodrome.createAction
   displayName: 'view Settings'
   build: -> {}
 
-Madeleines.Actions.apiError = Hippodrome.createAction
-  displayName: 'api Error'
-  build: (response, status) -> {response: response, status: status}
-
 Madeleines.Actions.viewportInfo = Hippodrome.createAction
   displayName: 'viewport Info'
   build: (width, height, density) ->

@@ -1,7 +1,12 @@
+{ApiStatus} = Madeleines.Stores
 {div, input, label} = React.DOM
 
 Settings = React.createClass
   displayName: 'Settings'
+
+  mixins: [
+    ApiStatus.listen('pending', ApiStatus.isPending)
+  ]
 
   getInitialState: ->
     return {
@@ -9,15 +14,17 @@ Settings = React.createClass
     }
 
   render: ->
-    {RadioButton} = Madeleines.Components
+    {RadioButton, SettingsStatusMessage, PasswordForm} = Madeleines.Components
+
+    if ApiStatus.isDone()
+      message = SettingsStatusMessage({
+        successful: ApiStatus.isSuccessful()
+        reasons: ApiStatus.failureReasons()
+      })
 
     div {className: 'settings'},
-      div({className: 'section-heading'}, 'Password')
-      label({htmlFor: 'old-password'}, 'Old Password')
-      input({type: 'password', id: 'old-password'})
-      label({htmlFor: 'new-password'}, 'New Password')
-      input({type: 'password', id: 'new-password'})
-      input({type: 'submit', className: 'button', value: 'Change Password', disabled: true})
+      message
+      PasswordForm({pending: @state.pending})
 
       div({className: 'section-heading'}, 'Notifications')
       RadioButton({

@@ -22,9 +22,9 @@ class Api::V1::RemembrancesController < Api::V1::ApiController
 
     if item.valid?
       remembrance = Remembrance.from_linked_item(item, current_user)
-      render_json({:baked => true})
+      render_json({:successful => true})
     else
-      render_json({:baked => false, :reasons => item.errors})
+      render_json({:successful => false, :reasons => item.errors})
     end
   end
 end

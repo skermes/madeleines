@@ -1,19 +1,8 @@
-{bake} = Madeleines.Api.Remembrances
+#= require ./network_task
 
-BakeRemembrance = Hippodrome.createDeferredTask
-  displayName: 'Bake Remembrance'
-  action: Madeleines.Actions.bake
-  task: (payload) ->
-    url = payload.url.trim()
-
-    success = (response) ->
-      if response.baked
-        Madeleines.Actions.bakingSuccessful()
-      else
-        Madeleines.Actions.bakingFailed(response.reasons)
-
-    error = Madeleines.Actions.apiError
-
-    bake({url: url}, success, error)
+BakeRemembrance = Madeleines.Tasks.makeNetworkTask(
+  Madeleines.Actions.bake,
+  Madeleines.Api.Remembrances.bake,
+  (payload) -> {url: payload.url.trim()})
 
 Madeleines.Tasks.BakeRemembrance = BakeRemembrance

@@ -5,7 +5,7 @@ BakingStatusMessage = React.createClass
   render: ->
     if @props.successful
       message = 'Saved'
-      klass = 'baking-status-message-successful'
+      klass = 'status-message-successful'
     else
       # For now, assume that we can only have one reason that a save failed.
       reason = @props.reasons[0]
@@ -17,7 +17,7 @@ BakingStatusMessage = React.createClass
         message = 'Madeleines can only handle text content right now, sorry.'
       else
         message = 'We don\'t know why, but that didn\'t work.  Try again?'
-      klass = 'baking-status-message-failed'
+      klass = 'status-message-failed'
 
     div {className: klass}, message
 

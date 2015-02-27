@@ -16,6 +16,7 @@ Madeleines::Application.routes.draw do
 
       get 'settings' => 'settings#index'
       put 'settings' => 'settings#update'
+      put 'change_password' => 'settings#change_password'
     end
   end
 
