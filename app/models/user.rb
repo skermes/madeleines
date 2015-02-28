@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   }
 
   def settings_with_defaults
-    DEFAULT_SETTINGS.merge(self.settings).merge({'email' => self.email})
+    user_settings = self.settings || {}
+    DEFAULT_SETTINGS.merge(user_settings).merge({'email' => self.email})
   end
 end
