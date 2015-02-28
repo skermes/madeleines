@@ -6,3 +6,5 @@ ChangePassword = Madeleines.Tasks.makeNetworkTask(
   (payload) -> {
     new_password: payload.newPassword,
     old_password: payload.oldPassword})
+
+Madeleines.Tasks.ChangePassword = ChangePassword

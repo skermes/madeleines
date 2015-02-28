@@ -1,6 +1,6 @@
 Madeleines.Actions.apiSent = Hippodrome.createAction
   displayName: 'api Sent'
-  build: () -> {}
+  build: (action) -> {action: action}
 
 Madeleines.Actions.apiSuccessful = Hippodrome.createAction
   displayName: 'api Successful'

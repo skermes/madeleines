@@ -13,5 +13,5 @@ Madeleines.Tasks.makeNetworkTask = (action, api, bodyFn) ->
 
       error = Madeleines.Actions.apiError
 
-      Madeleines.Actions.apiSent()
+      Madeleines.Actions.apiSent(action)
       api(body, success, error)

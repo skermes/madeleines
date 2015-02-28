@@ -1,6 +1,7 @@
 ApiStatus = Hippodrome.createStore
   initialize: ->
     @_status = 'none'
+    @_action = undefined
     @_failureReasons = undefined
 
     @dispatch(Madeleines.Actions.apiSent).to(@pending)
@@ -12,6 +13,7 @@ ApiStatus = Hippodrome.createStore
 
   pending: (payload) ->
     @_status = 'pending'
+    @_action = payload.action
     @trigger()
   successful: (payload) ->
     @_status = 'successful'
@@ -33,5 +35,7 @@ ApiStatus = Hippodrome.createStore
       @_status == 'failure' or @_status == 'successful'
     failureReasons: ->
       @_failureReasons
+    action: ->
+      @_action
 
 Madeleines.Stores.ApiStatus = ApiStatus

@@ -1,4 +1,4 @@
-{ApiStatus} = Madeleines.Stores
+{ApiStatus, Settings} = Madeleines.Stores
 {div, input, label} = React.DOM
 
 Settings = React.createClass
@@ -6,15 +6,12 @@ Settings = React.createClass
 
   mixins: [
     ApiStatus.listen('pending', ApiStatus.isPending)
+    Settings.listen('settings', Settings.settings)
   ]
 
-  getInitialState: ->
-    return {
-      notifications: false
-    }
-
   render: ->
-    {RadioButton, SettingsStatusMessage, PasswordForm} = Madeleines.Components
+    {RadioButton, SettingsStatusMessage, PasswordForm,
+     NotificationsForm} = Madeleines.Components
 
     if ApiStatus.isDone()
       message = SettingsStatusMessage({
@@ -24,28 +21,14 @@ Settings = React.createClass
 
     div {className: 'settings'},
       message
-      PasswordForm({pending: @state.pending})
-
-      div({className: 'section-heading'}, 'Notifications')
-      RadioButton({
-        name: 'notifications'
-        value: 'yes'
-        onChange: @notificationsYes
-        checked: @state.notifications
-      }, 'Yes, I want to get daily notifications')
-      RadioButton({
-        name: 'notifications'
-        value: 'no'
-        onChange: @notificationsNo
-        checked: !@state.notifications
-      }, 'No, don\'t send me any notifications')
-      input({type: 'submit', className: 'button', value: 'Save', disabled: true})
-
-  notificationsYes: ->
-    @setState(notifications: true)
-  notificationsNo: ->
-    @setState(notifications: false)
-
-
+      PasswordForm({
+        pending: @state.pending
+        networkAction: ApiStatus.action()
+      })
+      NotificationsForm({
+        pending: @state.pending
+        networkAction: ApiStatus.action()
+        settings: @state.settings
+      })
 
 Madeleines.Components.Settings = Settings

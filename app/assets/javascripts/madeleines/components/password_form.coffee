@@ -10,8 +10,11 @@ PasswordForm = React.createClass
     }
 
   render: ->
+    disable = @props.pending and
+              @props.networkAction == Madeleines.Actions.changePassword
+
     buttonText = 'Change Password'
-    if @props.pending
+    if disable
       buttonText = 'Changing Password...'
 
     form {onSubmit: @changePassword},
@@ -34,7 +37,7 @@ PasswordForm = React.createClass
         type: 'submit'
         className: 'button'
         value: buttonText
-        disabled: @props.pending
+        disabled: disable
       })
 
   changeOld: (event) ->
