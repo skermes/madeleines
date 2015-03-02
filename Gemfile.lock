@@ -54,6 +54,7 @@ GEM
     crass (0.2.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    excon (0.27.6)
     execjs (2.2.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
@@ -72,6 +73,9 @@ GEM
       railties (>= 3.1)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    mandrill-api (1.0.49)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     method_source (0.8.2)
     mime-types (2.4.2)
     mini_portile (0.6.0)
@@ -188,6 +192,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   hippodrome
   lodash-rails
+  mandrill-api
   minitest
   pg
   pismo

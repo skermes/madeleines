@@ -16,6 +16,7 @@ end
 
 # App stuff
 gem 'sorcery'
+gem 'mandrill-api'
 
 # Database stuff
 gem 'pg'
