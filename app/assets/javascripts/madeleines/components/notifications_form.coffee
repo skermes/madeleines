@@ -1,23 +1,54 @@
-{div, input, form} = React.DOM
+{div, span, input, form} = React.DOM
 
 NotificationsForm = React.createClass
   displayName: 'Notifications Form'
 
   getInitialState: ->
-    return {
-      notifications: if @props.settings then @props.settings.notifications else false
-    }
+    if @props.settings
+      return @getSettingsState(@props.settings)
+    else
+      return {
+        notifications: undefined
+        twitter: undefined
+      }
 
   componentWillReceiveProps: (newProps) ->
     if newProps.settings
-      @setState(notifications: newProps.settings.notifications)
+      @setState(@getSettingsState(newProps.settings))
+
+  getSettingsState: (settings) ->
+    return {
+      notifications: settings.notifications
+      twitter: settings.twitter
+    }
+
+  componentDidUpdate: (prevProps, prevState) ->
+    shouldFocus = @state.notifications == 'twitter' and
+                  prevState.notifications != 'twitter' and
+                  prevState.notifications != undefined
+    if shouldFocus
+      @refs.twitterInput.getDOMNode().focus()
 
   render: ->
     {RadioButton} = Madeleines.Components
 
-    yesPrompt = 'Yes, I want to get daily notifications'
     if @props.settings
-      yesPrompt = "#{yesPrompt} at #{@props.settings.email}"
+      emailSpan = span({}, ' to ',
+                           span({className: 'email'}, @props.settings.email))
+
+    twitterEnabled = @state.notifications == 'twitter'
+    twitterPrefix = span({
+      className: "twitter-prefix #{if !twitterEnabled then 'disabled' else ''}"
+    }, '@')
+    twitterInput = input({
+      type: 'text'
+      className: 'twitter-input'
+      value: @state.twitter
+      onChange: @twitterHandle
+      onClick: @notificationsTwitter
+      disabled: !twitterEnabled
+      ref: 'twitterInput'
+    })
 
     disable = @props.pending and
               @props.networkAction == Madeleines.Actions.updateSettings
@@ -30,16 +61,19 @@ NotificationsForm = React.createClass
       div({className: 'section-heading'}, 'Notifications')
       RadioButton({
         name: 'notifications'
-        value: 'yes'
-        onChange: @notificationsYes
-        checked: @state.notifications
-      }, yesPrompt)
+        onChange: @notificationsEmail
+        checked: @state.notifications == 'email'
+      }, 'Send daily email notifications', emailSpan)
+      RadioButton({
+        name: 'notifications'
+        onChange: @notificationsTwitter
+        checked: twitterEnabled
+      }, 'Tweet daily notifications to ', twitterPrefix, twitterInput)
       RadioButton({
         name: 'notification'
-        value: 'no'
-        onChange: @notificationsNo
-        checked: !@state.notifications
-      }, 'No, don\'t send me any notifications')
+        onChange: @notificationsNone
+        checked: @state.notifications == 'none'
+      }, 'Don\'t send me any notifications')
       input({
         type: 'submit'
         className: 'button'
@@ -47,15 +81,22 @@ NotificationsForm = React.createClass
         disabled: disable
       })
 
-  notificationsYes: ->
-    @setState(notifications: true)
-  notificationsNo: ->
-    @setState(notifications: false)
+  notificationsEmail: ->
+    @setState(notifications: 'email')
+  notificationsTwitter: ->
+    @setState(notifications: 'twitter')
+  notificationsNone: ->
+    @setState(notifications: 'none')
+  twitterHandle: (event) ->
+    @setState(twitter: event.target.value)
 
   updateSettings: (event) ->
     event.preventDefault()
-    newSettings =_.merge(_.clone(@props.settings),
-                         {notifications: @state.notifications})
+    updates = {
+      notifications: @state.notifications
+      twitter: @state.twitter
+    }
+    newSettings =_.merge(_.clone(@props.settings), updates)
     Madeleines.Actions.updateSettings(newSettings)
 
 Madeleines.Components.NotificationsForm = NotificationsForm

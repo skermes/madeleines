@@ -18,9 +18,26 @@
   label, input
     display block
 
+  label input
+    display inline
+
   label,
   input[type="submit"]
     margin-top 1rem
+
+  .email
+    background-color disabled-input-color
+    padding 0 0.5rem
+
+  .twitter-prefix
+    border 1px solid text-color
+    border-right none
+
+    &.disabled
+      background-color disabled-input-color
+
+  .twitter-input
+    border-left none
 
 @media tablet-media-query
   .settings

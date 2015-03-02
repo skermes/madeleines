@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   end
 
   DEFAULT_SETTINGS = {
-    'notifications' => false
+    'notifications' => 'none',
+    'twitter' => nil
   }
 
   def settings_with_defaults
