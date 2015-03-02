@@ -49,6 +49,7 @@ NotificationsForm = React.createClass
       disabled: !twitterEnabled
       ref: 'twitterInput'
     })
+    handleInput = span({style: {display: 'inline-block'}}, twitterPrefix, twitterInput)
 
     disable = @props.pending and
               @props.networkAction == Madeleines.Actions.updateSettings
@@ -68,7 +69,7 @@ NotificationsForm = React.createClass
         name: 'notifications'
         onChange: @notificationsTwitter
         checked: twitterEnabled
-      }, 'Tweet daily notifications to ', twitterPrefix, twitterInput)
+      }, 'Tweet daily notifications to ', handleInput)
       RadioButton({
         name: 'notification'
         onChange: @notificationsNone
