@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
     user_settings = self.settings || {}
     DEFAULT_SETTINGS.merge(user_settings).merge({'email' => self.email})
   end
+
+  def to_s
+    "#{id}:#{email}"
+  end
 end
