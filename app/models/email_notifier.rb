@@ -66,15 +66,15 @@ class EmailNotifier
 
     if MANDRILL_SUCCESS_STATUSES.include?(response['status']) and
        response['reject_reason'].nil?
-      puts "Successfully sent daily email to user #{@user}"
+      puts "Successfully sent daily email to #{@user}"
     else
-      puts "Mandrill error sending daily email to user #{@user}"
+      puts "Mandrill error sending daily email to #{@user}"
       puts "Mandrill rejection reason: #{response['reject_reason']}"
     end
   end
 
   def log_error(error)
-    puts "Exception thrown while sending daily email to user #{@user}:"
+    puts "Exception thrown while sending daily email to #{@user}:"
     puts "#{error}"
     puts "\t#{error.backtrace.join("\n\t")}"
   end
