@@ -1,8 +1,7 @@
 class TwitterNotifier
   MAX_CHARS = 140
-  # https://support.twitter.com/articles/78124-how-to-post-shortened-links-urls
-  LINK_LENGTH = 22
 
+  @@link_length = nil
   @@twitter = Twitter::REST::Client.new do |config|
     config.consumer_key        = ENV['TWITTER_CONSUMERKEY']
     config.consumer_secret     = ENV['TWITTER_CONSUMERSECRET']
@@ -31,12 +30,21 @@ class TwitterNotifier
 
   private
 
+  def link_length
+    if @@link_length.nil?
+      # Just to be safe.
+      @@link_length = @@twitter.configuration()['short_url_length_https']
+    end
+
+    @@link_length
+  end
+
   def build_tweet(remembrance)
     mention = "@#{@user.settings_with_defaults['twitter']} "
     link = " #{remembrance.url}"
 
     # 1 for space in front of link
-    available_characters = MAX_CHARS - LINK_LENGTH - 1 - mention.length
+    available_characters = MAX_CHARS - link_length - 1 - mention.length
 
     text = "#{remembrance.title} - #{remembrance.preview}"
     if text.length > available_characters
