@@ -1,7 +1,7 @@
 class TwitterNotifier
   MAX_CHARS = 140
 
-  @@link_length = nil
+  @@shortened_link_length = nil
   @@twitter = Twitter::REST::Client.new do |config|
     config.consumer_key        = ENV['TWITTER_CONSUMERKEY']
     config.consumer_secret     = ENV['TWITTER_CONSUMERSECRET']
@@ -30,13 +30,20 @@ class TwitterNotifier
 
   private
 
-  def link_length
-    if @@link_length.nil?
-      # Just to be safe.
-      @@link_length = @@twitter.configuration()['short_url_length_https']
+  def link_length(url)
+    # It's not documented anywhere, but my best guess is that Twitter doesn't
+    # shorten localhost urls.
+    if /localhost/i =~ url
+      return url.length
     end
 
-    @@link_length
+    if @@shortened_link_length.nil?
+      config = @@twitter.configuration()
+      # Just to be safe.
+      @@shortened_link_length = config['short_url_length_https']
+    end
+
+    @@shortened_link_length
   end
 
   def build_tweet(remembrance)
@@ -44,7 +51,8 @@ class TwitterNotifier
     link = " #{remembrance.url}"
 
     # 1 for space in front of link
-    available_characters = MAX_CHARS - link_length - 1 - mention.length
+    available_characters = MAX_CHARS - link_length(remembrance.url) -
+                           1 - mention.length
 
     text = "#{remembrance.title} - #{remembrance.preview}"
     if text.length > available_characters
