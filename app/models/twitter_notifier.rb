@@ -31,9 +31,8 @@ class TwitterNotifier
   private
 
   def link_length(url)
-    # It's not documented anywhere, but my best guess is that Twitter doesn't
-    # shorten localhost urls.
-    if /localhost/i =~ url
+    # Twitter doesn't consider localhost links as links..
+    if /:\/\/localhost/i =~ url
       return url.length
     end
 
