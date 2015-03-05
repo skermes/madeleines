@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     user = User.new
     user.email = email
     user.password = password
+    user.api_key = ApiKey.build
 
     # Cheat the date here so it shows up as user's first remembrance.
     howto_remembrance = Remembrance.from_linked_item(LinkedItem.howto_item,
