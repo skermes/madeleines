@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
 
   def settings_with_defaults
     user_settings = self.settings || {}
-    DEFAULT_SETTINGS.merge(user_settings).merge({'email' => self.email})
+    non_json_settings = {
+      'email' => self.email,
+      'api_key' => self.api_key
+    }
+    DEFAULT_SETTINGS.merge(user_settings).merge(non_json_settings)
   end
 
   def to_s
