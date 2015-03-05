@@ -6,6 +6,12 @@ Rails.application.config.sorcery.submodules = [:remember_me]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
+
+  # This is an undocumented feature of Sorcery, so I probably shouldn't use it,
+  # but it makes the api login code a *lot* cleaner.  Sorcery uses this key
+  # to hold different login methods it tries, like remember me cookies.
+  config.login_sources << :login_from_api_key
+
   # -- core --
   # What controller action to call for non-authenticated users. You can also
   # override the 'not_authenticated' method of course.
