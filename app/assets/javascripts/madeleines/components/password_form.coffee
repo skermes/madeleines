@@ -17,7 +17,7 @@ PasswordForm = React.createClass
     if disable
       buttonText = 'Changing Password...'
 
-    form {onSubmit: @changePassword},
+    form {className: 'section', onSubmit: @changePassword},
       div({className: 'section-heading'}, 'Password')
       label({htmlFor: 'old-password'}, 'Old Password')
       input({

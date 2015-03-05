@@ -11,7 +11,7 @@ Settings = React.createClass
 
   render: ->
     {RadioButton, SettingsStatusMessage, PasswordForm,
-     NotificationsForm} = Madeleines.Components
+     NotificationsForm, ApiKeyForm} = Madeleines.Components
 
     if ApiStatus.isDone()
       message = SettingsStatusMessage({
@@ -28,6 +28,9 @@ Settings = React.createClass
       NotificationsForm({
         pending: @state.pending
         networkAction: ApiStatus.action()
+        settings: @state.settings
+      })
+      ApiKeyForm({
         settings: @state.settings
       })
 

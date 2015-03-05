@@ -58,7 +58,7 @@ NotificationsForm = React.createClass
     if disable
       buttonText = 'Saving...'
 
-    form {onSubmit: @updateSettings},
+    form {className: 'section', onSubmit: @updateSettings},
       div({className: 'section-heading'}, 'Notifications')
       RadioButton({
         name: 'notifications'

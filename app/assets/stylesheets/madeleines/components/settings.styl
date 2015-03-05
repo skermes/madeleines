@@ -6,9 +6,11 @@
 
   padding 0 0.5rem
 
+  .section
+    margin 2rem 0
+
   .section-heading
     ui-font()
-    margin-top 2rem
     margin-bottom 1rem
     font-size 1.5rem
     color contrast-color
@@ -24,7 +26,6 @@
   label,
   input[type="submit"]
     margin-top 1rem
-    margin-bottom 1rem
 
   .email
     background-color disabled-input-color
@@ -42,7 +43,18 @@
   .twitter-input
     border-left none
 
+  .selector-wrap
+    padding 1.5rem 0
+
+    .api-key-selector
+      border none
+      font-size 1rem
+      width 20rem
+
 @media tablet-media-query
   .settings
     main-content()
     padding 0
+
+    .selector-wrap
+      padding 1rem 2rem
