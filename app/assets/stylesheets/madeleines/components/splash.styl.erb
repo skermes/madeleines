@@ -43,6 +43,7 @@
     background-image url('<%= image_path('splash-bg-phone.png') %>')
     background-size cover
     padding 6rem 0.5rem 2rem 0.5rem
+    border-bottom 0.5rem solid contrast-color
 
     .tagline-container
       width 19rem
@@ -76,15 +77,14 @@
   .splash-section
     content-font()
     padding 1rem
-    background-color contrast-color
+    background-color bg-color
     line-height 1.5rem
 
-    &:nth-child(2n)
-      background-color bg-color
-      text-align right
-
-    &:first-line
+    &.subhead
+      background-color contrast-color
+      text-align center
       font-weight bold
+      text-transform uppercase
 
   @media tablet-media-query
     .login-button, .login-form
@@ -120,18 +120,13 @@
       font-size 1.75rem
       line-height 2rem
 
-      &:first-line
-        font-size 2rem
-
       .splash-text
-        max-width 40rem
+        max-width 30rem
         margin auto
-        padding-right 6rem
 
-      &:nth-child(2n)
-        .splash-text
-          padding-right 0
-          padding-left 6rem
+      &.graf
+        padding-top 3rem
+        padding-bottom 3rem
 
 @media desktop-media-query
   .splash

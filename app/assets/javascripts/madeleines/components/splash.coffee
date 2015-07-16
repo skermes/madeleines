@@ -12,7 +12,7 @@ HeroLine = React.createClass
 SplashSection = React.createClass
   displayName: 'Splash Section'
   render: ->
-    div {className: 'splash-section'},
+    div {className: 'splash-section ' + @props.className},
       div({className: 'splash-text'}, @props.children)
 
 Splash = React.createClass
@@ -30,26 +30,11 @@ Splash = React.createClass
           div({className: 'hero-line-pop'}, 'M a d e l e i n e s')
           HeroLine({}, 'helps you')
           HeroLine({}, 'remember')))
-      SplashSection({}, 'If you\'re anything like me, you\'ve
-        squirreled away piles and piles of digital errata.  Whether it\'s a
-        bookmarking service or old blog posts or whatever, you saved it because
-        you thought it was valuable, and now it\'s out in the ether, gathering
-        dust.')
-      SplashSection({}, 'Madeleines is the answer I ginned up
-        to this (admittedly, rather bourgeois) problem.  You can save as many
-        links as you want in Madeleines, but you\'ll only get one back each
-        day.  Madeleines chooses one link at random - there\'s no analytics or
-        machine learning or fancy predictive tech.  It\'s the computer
-        equivalent of a blindfold and a handful of darts.')
-      SplashSection({}, 'If you don\'t like a day\'s link you
-        can tell the system to never give it back to you again, but you still
-        won\'t get another one until the next day.  Even at just one link a day,
-        I\'ve been pleasantly surprised at how often a day\'s link is
-        serendipitously relevant to what I\'m working on or thinking about.
-        Turns out that when I think I want to remember something later, I\'m
-        usually right.')
-      SplashSection({}, 'Make an account by logging in above,
-        and start remembering instead of forgetting.')
-
+      SplashSection({className: 'graf'}, 'If you\'re anything like me, you\'ve squirreled away more random pieces of digital errata than you care to count.  Bookmarks, blog posts, whatever - you thought it was important enough to save, so you stuck it someplace you could safely forget about it.  Now it\'s floating out there in the ether, gathering dust.')
+      SplashSection({className: 'subhead'}, 'Madeleines reminds you of cool things you\'ve forgotten')
+      SplashSection({className: 'graf'}, 'Madeleines is anti-bookmarking.  You can save as many links as you want, but you can\'t tag them or curate them or share them with your friends.  Instead, you get a daily reminder of one thing you wanted to save, but then forgot about.  You can mark a day\'s link so it never shows up again, but you still only get one that day.  Madeleines doesn\'t want to take up all your time or attention - it just wants to show you something neat.')
+      SplashSection({className: 'subhead'}, 'Don\'t underestimate serendipity')
+      SplashSection({className: 'graf'}, 'Madeleines chooses your daily link at random.  There\'s no machine learning or hardcore tech - it\'s basically a blindfold and a handful of darts that can run on a webserver.  Even without that, though, it still often manages to find just the right link for the day.  I\'ve had more than one argument with a friend get settled when Madeleines sent me an article I\'d saved about that very topic.')
+      SplashSection({className: 'subhead'}, 'Stop forgetting.  Start remembering.')
 
 Madeleines.Components.Splash = Splash
